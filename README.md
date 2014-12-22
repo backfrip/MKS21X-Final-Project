@@ -17,6 +17,9 @@
 
 ## Changelog
 
+### Version 0.0.1.1 _(2014-12-22)_
+- Removed 'brainstorm'
+
 ### Version 0.0.1 _(2014-12-22)_
 
 ##### New Features
