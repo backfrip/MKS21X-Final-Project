@@ -1,4 +1,3 @@
-APCS-FinalProject
-=================
+MKS21X Final Project
+====================
 
-First semester final project for Mr. K's APCS class. 
