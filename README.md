@@ -17,8 +17,11 @@
 
 ## Changelog
 
-### Version 0.0.2 (2014-12-22)
-  - Changed date format in Changelog
+### Version 0.0.2.1 (2014-12-22)
+  - The word "format" was bugging me and I wanted to make another commit anyways
+
+### [Version 0.0.2](https://github.com/backfrip/MKS21X-Final-Project/commit/7b5023ac461ca9d7c9e6357520921f2d0307a9d5) (2014-12-22)
+  - Changed date ~~format~~ style in Changelog
   - Began adding commit links on previous versions  
     Ideally, this should be done whevever a new official version is added  
     _(FORMATTING NOTE: Two trailing spaces allow line breaks within list elements)_
