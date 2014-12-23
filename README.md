@@ -1,23 +1,27 @@
 # MKS21X Final Project
 > ### Current Ideas
-> - File Manager `*(*) #`
+> - ~~File Manager `*(*) #`~~
 > - Code Collaborator `***(*) ###(#)`
 > - Games:
->   - Satire Text Adventure `*(*) ##(#)`
->   - Javamon `** ##(#)`
+>   - ~~Satire Text Adventure `*(*) ##(#)`~~
+>   - ~~Javamon `** ##(#)`~~
 >   - Atari 2600 Smash Bros `*** ###`
->   - \[Regular\] Tower Defense `** ##`
->   - Monopoly `** ##` \[ with AI `+** +#` \]
+>   - ~~\[Regular\] Tower Defense `** ##`~~
+>   - ~~Monopoly `** ##` \[ with AI `+** +#` \]~~
 > - Jokes:
->   - Netlogo `-* -#`
->   - Time Travel for PC `*^* 1/#^-8.#`
+>   - ~~Netlogo `-* -#`~~
+>   - ~~Time Travel for PC `*^* 1/#^-8.#`~~
 
 ### Abstract
 *Nothing to C here!*
 
 ## Changelog
 
-### Version 0.0.2.1 (2014-12-22)
+### Version 0.0.3 (2014-12-23)
+  - Added basic .gitignore from E's APCS directory
+  - Crossed out ideas
+
+### [Version 0.0.2.1](https://github.com/backfrip/MKS21X-Final-Project/commit/15df200cd690d200ae1cc20fe3cd80e8bdadc5b6) (2014-12-22)
   - The word "format" was bugging me and I wanted to make another commit anyways
 
 ### [Version 0.0.2](https://github.com/backfrip/MKS21X-Final-Project/commit/7b5023ac461ca9d7c9e6357520921f2d0307a9d5) (2014-12-22)
