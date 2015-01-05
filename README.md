@@ -1,4 +1,8 @@
 # MKS21X Final Project
+**_Team Force Lightning - JE & ES_**
+
+![alt text](http://img-cache.cdn.gaiaonline.com/92043e490c3c77c0458d916e08e63ce6/http://i756.photobucket.com/albums/xx204/tsuzuki31/lightning01.gif)
+
 > ### Current Ideas
 > - ~~File Manager `*(*) #`~~
 > - Code Collaborator `***(*) ###(#)`
@@ -17,7 +21,7 @@
 
 ## Changelog
 
-### Version 0.0.3 (2014-12-23)
+### [Version 0.0.3](https://github.com/backfrip/MKS21X-Final-Project/commit/38d7fbbf9e4014e987aaaed95ad5cd885b255948) (2014-12-23)
   - Added basic .gitignore from E's APCS directory
   - Crossed out ideas
 
