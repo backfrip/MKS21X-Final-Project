@@ -1,25 +1,19 @@
 # MKS21X Final Project
 **_Team Force Lightning - JE & ES_**
 
-![alt text](http://img-cache.cdn.gaiaonline.com/92043e490c3c77c0458d916e08e63ce6/http://i756.photobucket.com/albums/xx204/tsuzuki31/lightning01.gif)
+![alt text](http://i756.photobucket.com/albums/xx204/tsuzuki31/lightning01.gif)
 
-> ### Current Ideas
-> - ~~File Manager `*(*) #`~~
-> - Code Collaborator `***(*) ###(#)`
-> - Games:
->   - ~~Satire Text Adventure `*(*) ##(#)`~~
->   - ~~Javamon `** ##(#)`~~
->   - Atari 2600 Smash Bros `*** ###`
->   - ~~\[Regular\] Tower Defense `** ##`~~
->   - ~~Monopoly `** ##` \[ with AI `+** +#` \]~~
-> - Jokes:
->   - ~~Netlogo `-* -#`~~
->   - ~~Time Travel for PC `*^* 1/#^-8.#`~~
 
 ### Abstract
-*Nothing to C here!*
+##### Super Smash Bros. for Atari 2600
+A crossover fighting game type program based on the legendary Atari 2600 Video Computer System and the popular Super Smash Bros. video game series.
 
 ## Changelog
+
+### [Version 0.0.4]() (2014-12-23)
+  - Revised readme to be more legit
+  - That's a really bad version comment, so I'll be more specific
+  - What I did was update the readme to keep it in accordance with our decided project. 
 
 ### [Version 0.0.3](https://github.com/backfrip/MKS21X-Final-Project/commit/38d7fbbf9e4014e987aaaed95ad5cd885b255948) (2014-12-23)
   - Added basic .gitignore from E's APCS directory
