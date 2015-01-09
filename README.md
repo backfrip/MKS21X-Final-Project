@@ -9,6 +9,8 @@
 A crossover fighting game type program based on the legendary Atari 2600 Video Computer System and the popular Super Smash Bros. video game series.
 
 ## Changelog
+### Version 0.0.5 (2015-01-08)
+  - Added libGDX classes in 'lib' directory
 
 ### [Version 0.0.4](https://github.com/backfrip/MKS21X-Final-Project/commit/195a567ed93dc07dfc37ddac274189eb693c5c04) (2015-01-05)
   - Revised readme to be more legit
