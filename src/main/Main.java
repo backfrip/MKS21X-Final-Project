@@ -2,6 +2,7 @@ package main;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.Files;
 
 public class Main {
 	public static void main(String[] args) {
@@ -9,11 +10,9 @@ public class Main {
 	    config.title = "Super Smash Bros. K";
 	    config.width = 1200;
 	    config.height = 720;
-	    config.x=-1;
-	    config.y=-1;
-	    config.foregroundFPS=60;
-	    config.backgroundFPS=0;
-	    config.addIcon("resource/16px-icon.png", Internal);//I DON'T KNOW IF THIS WORKS
+	    config.addIcon("resource/ico/128px-icon.png", Files.FileType.Internal); // Mac
+	    config.addIcon("resource/ico/32px-icon.png", Files.FileType.Internal); // Linux
+	    config.addIcon("resource/ico/16px-icon.png", Files.FileType.Internal); // Windows
 	    new LwjglApplication(new Smash(), config);
 	}
 }
