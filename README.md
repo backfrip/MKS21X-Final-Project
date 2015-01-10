@@ -26,6 +26,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Added and cleaned up icon code
   - Switched out test_splash.jpg
   - Added compilation instructions to README
+
 #### New Features
   - Window icon
 
@@ -34,6 +35,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Began writing Smash (Game class), currently loads Splash screen
   - Wrote temporary Splash screen
   - Began writing Menu (Main menu) screen
+
 #### New Features
   - Opens to splash screen of anticlimatic lightning JPEG
 
@@ -62,7 +64,9 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Removed 'brainstorm'
 
 ### [Version 0.0.1](https://github.com/backfrip/MKS21X-Final-Project/commit/bb974cf5a54ec30eb16460d5ee0751c9a0eb74c3) (2014-12-22)
+
 ##### New Features
   - [REAMDE](README.md) updated *(not really a feature)*
+
 ##### Bugfixes
   - No problems reported; this category just for show
