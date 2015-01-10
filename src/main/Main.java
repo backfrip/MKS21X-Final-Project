@@ -10,6 +10,7 @@ public class Main {
 	    config.title = "Super Smash Bros. K";
 	    config.width = 1200;
 	    config.height = 720;
+	    config.resizable = false;
 	    config.addIcon("resource/ico/128px-icon.png", Files.FileType.Internal); // Mac
 	    config.addIcon("resource/ico/32px-icon.png", Files.FileType.Internal); // Linux
 	    config.addIcon("resource/ico/16px-icon.png", Files.FileType.Internal); // Windows

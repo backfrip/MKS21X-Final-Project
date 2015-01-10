@@ -3,6 +3,7 @@ package screen;
 import main.*;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
@@ -29,17 +30,17 @@ public class Splash implements Screen {
 
 	batch.setProjectionMatrix(camera.combined);
 	batch.begin();
-	batch.draw(splash, 1, 1, 30, 16);
+	batch.draw(splash, 10, 3, 12, 12);
 	batch.end();
 
-	if (Gdx.input.justTouched())
-	    game.setScreen(new Splash(game));
+	if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY))
+	    game.setScreen(new Title(game));
     }
 
     @Override
     public void show() {
 	batch = new SpriteBatch();
-	splash = new Texture(new FileHandle("resource/test_splash.jpg"));
+	splash = new Texture(new FileHandle("resource/ico/128px-icon.png"));
     }
 
     @Override
@@ -58,7 +59,7 @@ public class Splash implements Screen {
     }
 
     @Override
-    public void resize(int arg0, int arg1) {
+    public void resize(int wdith, int height) {
     }
 
     @Override

@@ -22,7 +22,12 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   3. Run with: `java -cp "lib/*;bin" main.Main`
 
 ## Changelog
-### Version 0.1.1 (2015-01-10)
+### Version 0.1.2 (2015-01-10)
+
+##### New Features
+  - Implemented Splash Screen, Title Screen, Main Menu sequence at application startup
+
+### [Version 0.1.1](https://github.com/backfrip/MKS21X-Final-Project/commit/dd943d68f564bad83cc5ebe4f8ae6b3065678292) (2015-01-10)
   - Added and cleaned up icon code
   - Switched out test_splash.jpg
   - Added compilation instructions to README
@@ -30,7 +35,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 ##### New Features
   - Window icon
 
-### Version 0.1.0 (2015-01-09)
+### [Version 0.1.0](https://github.com/backfrip/MKS21X-Final-Project/commit/9135c2b299fd3b94ebcdbacf50b90805b78bc37c) (2015-01-09)
   - Wrote Main class to open Smash (Game class)
   - Began writing Smash (Game class), currently loads Splash screen
   - Wrote temporary Splash screen
