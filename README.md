@@ -8,7 +8,27 @@
 ##### Super Smash Bros. for Atari 2600
 A crossover fighting game type program based on the legendary Atari 2600 Video Computer System and the popular Super Smash Bros. video game series.
 
+### Compile & Run Intructions
+##### Eclipse
+  1. Run Eclipse
+  2. In the File menu, select `Import... > General > Existing Projects into Workspace`
+  3. Set root directory to MKS21X-Final-Project repository
+  4. Make sure "Copy projects into workspace" is unchecked
+  5. Run project (`Run > Run`)
+
+##### Command Line
+  1. Navigate to MKS21X-Final-Project directory
+  2. Compile with: `javac -d bin -cp "lib/*" -sourcepath src src/main/Main.java`
+  3. Run with: `java -cp "lib/*;bin" main.Main`
+
 ## Changelog
+### Version 0.1.1 (2015-01-10)
+  - Added and cleaned up icon code
+  - Switched out test_splash.jpg
+  - Added compilation instructions to README
+#### New Features
+  - Window icon
+
 ### Version 0.1.0 (2015-01-09)
   - Wrote Main class to open Smash (Game class)
   - Began writing Smash (Game class), currently loads Splash screen
@@ -42,9 +62,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Removed 'brainstorm'
 
 ### [Version 0.0.1](https://github.com/backfrip/MKS21X-Final-Project/commit/bb974cf5a54ec30eb16460d5ee0751c9a0eb74c3) (2014-12-22)
-
 ##### New Features
   - [REAMDE](README.md) updated *(not really a feature)*
-
 ##### Bugfixes
   - No problems reported; this category just for show
