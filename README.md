@@ -9,7 +9,15 @@
 A crossover fighting game type program based on the legendary Atari 2600 Video Computer System and the popular Super Smash Bros. video game series.
 
 ## Changelog
-### Version 0.0.5 (2015-01-08)
+### Version 0.1.0 (2015-01-09)
+  - Wrote Main class to open Smash (Game class)
+  - Began writing Smash (Game class), currently loads Splash screen
+  - Wrote temporary Splash screen
+  - Began writing Menu (Main menu) screen
+#### New Features
+  - Opens to splash screen of anticlimatic lightning JPEG
+
+### [Version 0.0.5](https://github.com/backfrip/MKS21X-Final-Project/commit/8d0ef165126a7f37c35f1a590da2deb4f1826309) (2015-01-08)
   - Added libGDX classes in 'lib' directory
 
 ### [Version 0.0.4](https://github.com/backfrip/MKS21X-Final-Project/commit/195a567ed93dc07dfc37ddac274189eb693c5c04) (2015-01-05)
@@ -31,12 +39,12 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
     _(FORMATTING NOTE: Two trailing spaces allow line breaks within list elements)_
 
 ### [Version 0.0.1.1](https://github.com/backfrip/MKS21X-Final-Project/commit/50b2475dd54e154fd75b9c9cf949b935a2546642) (2014-12-22)
-- Removed 'brainstorm'
+  - Removed 'brainstorm'
 
 ### [Version 0.0.1](https://github.com/backfrip/MKS21X-Final-Project/commit/bb974cf5a54ec30eb16460d5ee0751c9a0eb74c3) (2014-12-22)
 
 ##### New Features
-- [REAMDE](README.md) updated *(not really a feature)*
+  - [REAMDE](README.md) updated *(not really a feature)*
 
 ##### Bugfixes
-- No problems reported; this category just for show
+  - No problems reported; this category just for show
