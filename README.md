@@ -27,7 +27,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Switched out test_splash.jpg
   - Added compilation instructions to README
 
-#### New Features
+##### New Features
   - Window icon
 
 ### Version 0.1.0 (2015-01-09)
@@ -36,7 +36,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Wrote temporary Splash screen
   - Began writing Menu (Main menu) screen
 
-#### New Features
+##### New Features
   - Opens to splash screen of anticlimatic lightning JPEG
 
 ### [Version 0.0.5](https://github.com/backfrip/MKS21X-Final-Project/commit/8d0ef165126a7f37c35f1a590da2deb4f1826309) (2015-01-08)
