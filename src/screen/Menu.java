@@ -13,15 +13,21 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.files.FileHandle;
 
 public class Menu implements Screen {
     private Smash game;
-    private TextButton smash, exit;
+    //private TextButton smash, exit;
     private TextButtonStyle style;
     private Stage stage;
     private BitmapFont font;
     private Table table;
+    private ImageButton smash,solo,exit,options;
 
     public Menu(Smash gameRef) {
 	game = gameRef;
@@ -32,6 +38,8 @@ public class Menu implements Screen {
 	style.font = font;
 	
 	smash = new TextButton("Smash", style);
+	
+	//smash=new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(new FileHandle("resource/main-menu/smash.png"))))); doesn't work
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
