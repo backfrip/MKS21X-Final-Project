@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class Menu implements Screen {
     private Smash game;
     private Music theme;
-    private TextButton test;
+    private TextButton smash, exit;
     private TextButtonStyle style;
     private Stage stage;
     private BitmapFont font;
@@ -35,8 +35,16 @@ public class Menu implements Screen {
 	style = new TextButtonStyle();
 	style.font = font;
 	
-	test = new TextButton("Exit Game", style);
-	test.addListener(new ClickListener() {
+	smash = new TextButton("Smash", style);
+	smash.addListener(new ClickListener() {
+	    @Override
+	    public void clicked(InputEvent event, float x, float y) {
+		game.setScreen(new Char(game));
+	    }
+	});
+	
+	exit = new TextButton("Exit Game", style);
+	exit.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
 		Gdx.app.exit();
@@ -44,7 +52,8 @@ public class Menu implements Screen {
 	});
 	
 	table = new Table();
-	table.add(test).row();
+	table.add(smash).row();
+	table.add(exit).row();
 	table.setFillParent(true);
 	
 	stage = new Stage();
