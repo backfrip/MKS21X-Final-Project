@@ -22,12 +22,12 @@ import com.badlogic.gdx.files.FileHandle;
 
 public class Menu implements Screen {
     private Smash game;
-    //private TextButton smash, exit;
+    private TextButton smash, exit;
     private TextButtonStyle style;
     private Stage stage;
     private BitmapFont font;
     private Table table;
-    private ImageButton smash,solo,exit,options;
+    //private ImageButton smash,solo,exit,options;
 
     public Menu(Smash gameRef) {
 	game = gameRef;

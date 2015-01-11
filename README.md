@@ -22,7 +22,13 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   3. Run with: `java -cp "lib/*;bin" main.Main`
 
 ## Changelog
-### [Version 0.1.2.3](#) (2015-01-10)
+
+### [Version 0.1.2.4](#) (2015-01-10)
+
+##### New Features
+  - Added second menu theme (the new theme and the old theme each have a 50% chance of playing)
+
+### [Version 0.1.2.3](https://github.com/backfrip/MKS21X-Final-Project/commit/824ef43d18ffd285f5f5e420447ee43fbb27fe15) (2015-01-10)
 
 ##### New Features
   - Added another button
