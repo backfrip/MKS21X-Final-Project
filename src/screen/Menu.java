@@ -46,7 +46,8 @@ public class Menu implements Screen {
 
     @Override
     public void show() {
-	theme = Gdx.audio.newMusic(new FileHandle("resource/sound/music/menu-theme.wav"));
+	theme = Gdx.audio.newMusic(new FileHandle(
+		"resource/sound/music/menu-theme.wav"));
 	theme.setLooping(true);
 	theme.play();
     }

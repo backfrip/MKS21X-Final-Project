@@ -21,6 +21,7 @@ public class Title implements Screen {
     private boolean go;
     private int count;
     private Texture text;
+
     public Title(Smash gameRef) {
 	game = gameRef;
 	camera = new OrthographicCamera();
@@ -31,51 +32,42 @@ public class Title implements Screen {
     public void render(float delta) {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	count++;
+	
+	batch.begin();
+	batch.draw(splash, 0, 0, 32, 18);
 	if (!go) {
-	    batch.setProjectionMatrix(camera.combined);
-	    batch.begin();
-	    batch.draw(splash, 0, 0, 32, 18);
-	    if(count<60){
-		batch.draw(text,10,2,12,1);
-		//System.out.println("hi");
-	    }else if(count>120){
-		count=0;
-		//System.out.println("yo");
-	    }
-	    batch.end();
-	    if (Gdx.input.justTouched()
-		    || Gdx.input.isKeyJustPressed(Keys.ANY_KEY)) {
+	    drawText(60, 120);
+	    if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY)) {
 		go = true;
 		advance.play();
-		count=0;
 	    }
 	} else {
-	    if(advance.isPlaying()){
-		count++;
-		batch.begin();
-		batch.draw(splash, 0, 0, 32, 18);
-		if(count<5){
-		    batch.draw(text,10,2,12,1);
-		}else if (count>10){
-		    count=0;
-		}
-		batch.end();
-	    }
+	    count++;
+	    drawText(5, 10);
 	    if (!advance.isPlaying())
 		game.setScreen(new Menu(game));
 	}
-    }	
+	batch.end();
+	count++;
+    }
+    
+    private void drawText(int on, int reset) {
+	if (count < on)
+	    batch.draw(text, 10, 2, 12, 1);
+	else if (count > reset)
+	    count = 0;
+    }
 
     @Override
     public void show() {
 	batch = new SpriteBatch();
+	batch.setProjectionMatrix(camera.combined);
 	splash = new Texture(new FileHandle("resource/test_splash.jpg"));
 	text = new Texture(new FileHandle("resource/splashtext.png"));
 	advance = Gdx.audio.newMusic(new FileHandle(
 		"resource/sound/menu-advance.ogg"));
 	go = false;
-	count=0;
+	count = 0;
     }
 
     @Override
