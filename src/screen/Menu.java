@@ -17,7 +17,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class Menu implements Screen {
     private Smash game;
-    private Music theme;
     private TextButton smash, exit;
     private TextButtonStyle style;
     private Stage stage;
@@ -26,9 +25,6 @@ public class Menu implements Screen {
 
     public Menu(Smash gameRef) {
 	game = gameRef;
-	theme = Gdx.audio.newMusic(new FileHandle(
-		"resource/sound/music/menu-theme.wav"));
-	
 	
 	font = new BitmapFont();
 	
@@ -73,18 +69,16 @@ public class Menu implements Screen {
 
     @Override
     public void dispose() {
-	theme.dispose();
 	game.dispose();
     }
 
     @Override
     public void hide() {
-	theme.stop();
     }
 
     @Override
     public void pause() {
-	theme.pause();
+	Smash.theme.pause();
     }
 
     @Override
@@ -93,13 +87,12 @@ public class Menu implements Screen {
 
     @Override
     public void resume() {
-	theme.play();
+	Smash.theme.play();
     }
 
     @Override
     public void show() {
-	theme.setLooping(true);
-	theme.play();
+	Smash.theme.play();
     }
 
 }
