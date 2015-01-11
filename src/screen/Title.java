@@ -26,6 +26,14 @@ public class Title implements Screen {
 	game = gameRef;
 	camera = new OrthographicCamera();
 	camera.setToOrtho(false, 32, 18);
+	batch = new SpriteBatch();
+	batch.setProjectionMatrix(camera.combined);
+	splash = new Texture(new FileHandle("resource/test_splash.jpg"));
+	text = new Texture(new FileHandle("resource/splashtext.png"));
+	advance = Gdx.audio.newMusic(new FileHandle(
+		"resource/sound/menu-advance.ogg"));
+	go = false;
+	count = 0;
     }
 
     @Override
@@ -36,7 +44,7 @@ public class Title implements Screen {
 	batch.begin();
 	batch.draw(splash, 0, 0, 32, 18);
 	if (!go) {
-	    drawText(60, 120);
+	    drawText(50, 100);
 	    if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY)) {
 		go = true;
 		advance.play();
@@ -60,14 +68,6 @@ public class Title implements Screen {
 
     @Override
     public void show() {
-	batch = new SpriteBatch();
-	batch.setProjectionMatrix(camera.combined);
-	splash = new Texture(new FileHandle("resource/test_splash.jpg"));
-	text = new Texture(new FileHandle("resource/splashtext.png"));
-	advance = Gdx.audio.newMusic(new FileHandle(
-		"resource/sound/menu-advance.ogg"));
-	go = false;
-	count = 0;
     }
 
     @Override
@@ -75,6 +75,8 @@ public class Title implements Screen {
 	batch.dispose();
 	splash.dispose();
 	game.dispose();
+	advance.dispose();
+	text.dispose();
     }
 
     @Override

@@ -21,6 +21,8 @@ public class Splash implements Screen {
 	game = gameRef;
 	camera = new OrthographicCamera();
 	camera.setToOrtho(false, 32, 18);
+	batch = new SpriteBatch();
+	splash = new Texture(new FileHandle("resource/ico/128px-icon.png"));
     }
 
     @Override
@@ -39,8 +41,6 @@ public class Splash implements Screen {
 
     @Override
     public void show() {
-	batch = new SpriteBatch();
-	splash = new Texture(new FileHandle("resource/ico/128px-icon.png"));
     }
 
     @Override
