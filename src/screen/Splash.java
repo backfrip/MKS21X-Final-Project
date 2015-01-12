@@ -16,22 +16,30 @@ import com.badlogic.gdx.math.MathUtils;
 import aurelienribon.tweenengine.TweenManager;
 import aurelienribon.tweenengine.Tween;
 
+/**
+ * Opening splash for game. Should play theme and display various attributions.
+ */
 public class Splash implements Screen {
     private SpriteBatch batch;
     private Sprite splash;
     private Smash game;
     private TweenManager tweenManager;
-    private boolean secret;
     private Music theme;
     private float d;
 
+    /**
+     * Creates a new Splash screen. Sets up various resources.
+     * 
+     * @param gameRef
+     *            Game linked to.
+     */
     public Splash(Smash gameRef) {
-	secret = MathUtils.random(200) == 0;
 	game = gameRef;
+
 	batch = new SpriteBatch();
 	d = 0;
 
-	if (secret) {
+	if (MathUtils.random(200) == 0) {
 	    splash = new Sprite(new Texture(new FileHandle(
 		    "resource/splash/splash-secret.png")));
 	    theme = Gdx.audio.newMusic(new FileHandle(
@@ -44,11 +52,17 @@ public class Splash implements Screen {
 							       // until we get a
 							       // real theme
 	}
+
 	splash.setScale((float) 1);
 	splash.setPosition((float) 0, (float) 0);
+
+	tweenManager = new TweenManager();
     }
 
-
+    /**
+     * Renders frames of Splash screen. Clears screen, draws SpriteBatch,
+     * updates tweenManager, manages screen exit.
+     */
     @Override
     public void render(float delta) {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -57,27 +71,30 @@ public class Splash implements Screen {
 	batch.begin();
 	splash.draw(batch);
 	batch.end();
-	
+
 	tweenManager.update(delta);
-	
+
 	if (!theme.isPlaying()) {
 	    Tween.to(splash, SpriteAccessor.ALPHA, 2).target(0)
 		    .start(tweenManager);
 	    d += delta;
 	}
-	
+
 	if (d > 3 || Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 	    game.setScreen(new Title(game));
 	}
     }
 
+    /**
+     * Called when Splash is shown. Plays theme and [currently] manages initial
+     * fade in.
+     */
     @Override
     public void show() {
-	tweenManager = new TweenManager();
+	theme.play();
 	Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 	Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
 	Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).start(tweenManager);
-	theme.play();
     }
 
     @Override
@@ -87,6 +104,9 @@ public class Splash implements Screen {
 	game.dispose();
     }
 
+    /**
+     * Called when screen is hidden. Stops theme if playing.
+     */
     @Override
     public void hide() {
 	theme.stop();

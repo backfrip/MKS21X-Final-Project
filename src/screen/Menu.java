@@ -3,6 +3,7 @@ package screen;
 import main.*;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -14,6 +15,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
+/**
+ * Main menu of the Smash game.
+ */
 public class Menu implements Screen {
     private Smash game;
     private TextButton smash, exit;
@@ -21,26 +25,35 @@ public class Menu implements Screen {
     private Stage stage;
     private BitmapFont font;
     private Table table;
-    //private ImageButton smash,solo,exit,options;
 
+    // private ImageButton smash,solo,exit,options;
+
+    /**
+     * Creates a new Menu screen. Defines and positions various buttons used.
+     * 
+     * @param gameRef
+     *            Game linked to.
+     */
     public Menu(Smash gameRef) {
 	game = gameRef;
-	
+
 	font = new BitmapFont();
-	
+
 	style = new TextButtonStyle();
 	style.font = font;
-	
+
 	smash = new TextButton("Smash", style);
-	
-	//smash=new ImageButton(new TextureRegionDrawable(new TextureRegion(new Texture(new FileHandle("resource/main-menu/smash.png"))))); doesn't work
+
+	// smash=new ImageButton(new TextureRegionDrawable(new TextureRegion(new
+	// Texture(new FileHandle("resource/main-menu/smash.png"))))); doesn't
+	// work
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
 		game.setScreen(new Char(game));
 	    }
 	});
-	
+
 	exit = new TextButton("Exit Game", style);
 	exit.addListener(new ClickListener() {
 	    @Override
@@ -48,30 +61,62 @@ public class Menu implements Screen {
 		Gdx.app.exit();
 	    }
 	});
-	
+
 	table = new Table();
 	table.add(smash).row();
 	table.add(exit).row();
 	table.setFillParent(true);
-	
+
 	stage = new Stage();
 	stage.addActor(table);
-	
+
 	Gdx.input.setInputProcessor(stage);
     }
 
+    /**
+     * Renders Menu. Clears screen, processes Stage action, and draws Stage.
+     */
     @Override
     public void render(float arg0) {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	
+
 	stage.act();
 	stage.draw();
+
+	if (Gdx.input.isKeyJustPressed(Keys.T))
+	    swapTheme();
+	
+	if (Gdx.input.isKeyJustPressed(Keys.ESCAPE))
+	    Gdx.app.exit();
     }
 
     @Override
     public void dispose() {
 	game.dispose();
+    }
+
+    /**
+     * Called when Menu screen is showed. Plays one of two themes.
+     */
+    @Override
+    public void show() { // At some point, we should switch Menu's
+	// initialization to be in Smash, so that one instance
+	// can be used consistently.
+	if (MathUtils.random(1) == 0)
+	    Smash.theme0.play();
+	else
+	    Smash.theme1.play();
+    }
+
+    private void swapTheme() {
+	if (Smash.theme0.isPlaying()) {
+	    Smash.theme0.stop();
+	    Smash.theme1.play();
+	} else {
+	    Smash.theme1.stop();
+	    Smash.theme0.play();
+	}
     }
 
     @Override
@@ -88,14 +133,6 @@ public class Menu implements Screen {
 
     @Override
     public void resume() {
-    }
-
-    @Override
-    public void show() {
-	if (MathUtils.random(1) == 0)
-	    Smash.theme0.play();
-	else
-	    Smash.theme1.play();
     }
 
 }
