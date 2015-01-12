@@ -5,25 +5,47 @@ import main.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import aurelienribon.tweenengine.TweenManager;
+import aurelienribon.tweenengine.Tween;
+import java.util.Random;
 
 public class Splash implements Screen {
     private SpriteBatch batch;
-    private Texture splash;
+    private Sprite splash;
     private Smash game;
     private OrthographicCamera camera;
-
+    private TweenManager tweenManager;
+    private Random rand;
+    private String filename;
+    private boolean secret;
+    private Music theme;
+    private float d;
     public Splash(Smash gameRef) {
+	rand = new Random();
+	secret = (rand.nextInt(200) == 0);
 	game = gameRef;
 	camera = new OrthographicCamera();
-	camera.setToOrtho(false, 32, 18);
+	camera.setToOrtho(false, 1280, 720);
 	batch = new SpriteBatch();
-	splash = new Texture(new FileHandle("resource/ico/128px-icon.png"));
+	d=0;
+	if(secret){
+	    splash = new Sprite(new Texture(new FileHandle("resource/splash/splash-secret.png")));
+	    theme = Gdx.audio.newMusic(new FileHandle("resource/sound/music/splash-secret.wav"));
+	}else{
+	    splash = new Sprite(new Texture(new FileHandle("resource/splash/splash.png")));
+	    theme = Gdx.audio.newMusic(new FileHandle("resource/sound/music/splash-secret.wav"));//placeholder until we get a real theme
+	}
+	splash.setScale((float)1);
+	splash.setPosition((float)0,(float)0);
     }
+
 
     @Override
     public void render(float delta) {
@@ -32,21 +54,31 @@ public class Splash implements Screen {
 
 	batch.setProjectionMatrix(camera.combined);
 	batch.begin();
-	batch.draw(splash, 10, 3, 12, 12);
+	splash.draw(batch);
 	batch.end();
-
-	if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY))
+	tweenManager.update(delta);
+	if(!theme.isPlaying()){
+	    Tween.to(splash,SpriteAccessor.ALPHA, 2).target(0).start(tweenManager);
+	    d+=delta;
+	}
+	if(d>3){
 	    game.setScreen(new Title(game));
+	}
     }
 
     @Override
     public void show() {
+	tweenManager = new TweenManager();
+	Tween.registerAccessor(Sprite.class, new SpriteAccessor());	
+	Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
+	Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).start(tweenManager);
+	theme.play();
     }
 
     @Override
     public void dispose() {
 	batch.dispose();
-	splash.dispose();
+	//splash.dispose();
 	game.dispose();
     }
 

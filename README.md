@@ -23,7 +23,16 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 
 ## Changelog
 
-### [Version 0.1.2.4](#) (2015-01-10)
+### [Version 0.1.3](#) (2015-01-11)
+
+  - Added TweenEngine to lib
+  - Changed resolution to 1280x720 because that's a real aspect ratio
+
+##### New Features
+  - Splash screen now shows the Force Lightning logo and plays music
+  - With the help of TweenEngine, it also fades in and out!
+  - Added a secret splash (has a 1 in 200 chance of playing instead of the regular splash)
+### [Version 0.1.2.4](https://github.com/backfrip/MKS21X-Final-Project/commit/b342dbae20d4e3d3c4e7ff590aba1fc631b706a6) (2015-01-10)
 
 ##### New Features
   - Added second menu theme (the new theme and the old theme each have a 50% chance of playing)

@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 	LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 	config.title = "Super Smash Bros. K";
-	config.width = 1200;
+	config.width = 1280;
 	config.height = 720;
 	config.resizable = false;
 	config.addIcon("resource/ico/128px-icon.png", Files.FileType.Internal); // Mac
