@@ -86,7 +86,7 @@ public class Menu implements Screen {
 
     @Override
     public void pause() {
-	Smash.theme.pause();
+	Smash.theme0.pause();
     }
 
     @Override
@@ -95,12 +95,12 @@ public class Menu implements Screen {
 
     @Override
     public void resume() {
-	Smash.theme.play();
+	Smash.theme0.play();
     }
 
     @Override
     public void show() {
-	Smash.theme.play();
+	Smash.theme0.play();
     }
 
 }

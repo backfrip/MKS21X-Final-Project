@@ -19,12 +19,16 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 ##### Command Line
   1. Navigate to MKS21X-Final-Project directory
   2. Compile with: `javac -d bin -cp "lib/*" -sourcepath src src/main/Main.java`
-  3. Run with: `java -cp "lib/*;bin" main.Main`
+  3. Using Java 7 or later, run with: `java -cp "lib/*;bin" main.Main`  
+  Using Java 6 or earlier, run with: `java -cp "lib/*:bin" main.Main
 
 ## Changelog
+### [Version 0.1.3.1](#) (2015-01-12)
+  - Adjusted Random implementation (to be readded later)
+  - Added compile instructions for Java 6
+  - Made splash skippable (as long as you press the SECRET key!!!! [*it's escape*])
 
-### [Version 0.1.3](#) (2015-01-11)
-
+### [Version 0.1.3](https://github.com/backfrip/MKS21X-Final-Project/commit/02f8df22b6b9563775528f14b8e7cf44a858384a) (2015-01-11)
   - Added TweenEngine to lib
   - Changed resolution to 1280x720 because that's a real aspect ratio
 
@@ -32,6 +36,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   - Splash screen now shows the Force Lightning logo and plays music
   - With the help of TweenEngine, it also fades in and out!
   - Added a secret splash (has a 1 in 200 chance of playing instead of the regular splash)
+
 ### [Version 0.1.2.4](https://github.com/backfrip/MKS21X-Final-Project/commit/b342dbae20d4e3d3c4e7ff590aba1fc631b706a6) (2015-01-10)
 
 ##### New Features
