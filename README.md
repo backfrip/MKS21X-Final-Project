@@ -23,7 +23,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   Using Java 6 or earlier, run with: `java -cp "lib/*:bin" main.Main
 
 ## Changelog
-### [Version 0.1.3.1](#) (2015-01-12)
+### [Version 0.1.3.1](https://github.com/backfrip/MKS21X-Final-Project/commit/dee9063deeb3b3a5f87b99e1337fa9843809ca60) (2015-01-12)
   - Adjusted Random implementation (to be readded later)
   - Added compile instructions for Java 6
   - Made splash skippable (as long as you press the SECRET key!!!! [*it's escape*])

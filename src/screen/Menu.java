@@ -4,21 +4,15 @@ import main.*;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.files.FileHandle;
 
 public class Menu implements Screen {
     private Smash game;
@@ -86,7 +80,6 @@ public class Menu implements Screen {
 
     @Override
     public void pause() {
-	Smash.theme0.pause();
     }
 
     @Override
@@ -95,12 +88,14 @@ public class Menu implements Screen {
 
     @Override
     public void resume() {
-	Smash.theme0.play();
     }
 
     @Override
     public void show() {
-	Smash.theme0.play();
+	if (MathUtils.random(1) == 0)
+	    Smash.theme0.play();
+	else
+	    Smash.theme1.play();
     }
 
 }

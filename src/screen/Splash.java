@@ -8,34 +8,29 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
+
 import aurelienribon.tweenengine.TweenManager;
 import aurelienribon.tweenengine.Tween;
-import java.util.Random;
 
 public class Splash implements Screen {
     private SpriteBatch batch;
     private Sprite splash;
     private Smash game;
-    private OrthographicCamera camera;
     private TweenManager tweenManager;
-    private Random rand;
     private boolean secret;
     private Music theme;
     private float d;
 
     public Splash(Smash gameRef) {
-	rand = new Random();
-	secret = (rand.nextInt(200) == 0);
+	secret = MathUtils.random(200) == 0;
 	game = gameRef;
-	camera = new OrthographicCamera();
-	camera.setToOrtho(false, 1280, 720);
 	batch = new SpriteBatch();
 	d = 0;
-	
+
 	if (secret) {
 	    splash = new Sprite(new Texture(new FileHandle(
 		    "resource/splash/splash-secret.png")));
@@ -59,16 +54,18 @@ public class Splash implements Screen {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-	batch.setProjectionMatrix(camera.combined);
 	batch.begin();
 	splash.draw(batch);
 	batch.end();
+	
 	tweenManager.update(delta);
+	
 	if (!theme.isPlaying()) {
 	    Tween.to(splash, SpriteAccessor.ALPHA, 2).target(0)
 		    .start(tweenManager);
 	    d += delta;
 	}
+	
 	if (d > 3 || Gdx.input.isKeyJustPressed(Keys.ESCAPE)) {
 	    game.setScreen(new Title(game));
 	}
@@ -86,12 +83,13 @@ public class Splash implements Screen {
     @Override
     public void dispose() {
 	batch.dispose();
-	// splash.dispose();
+	theme.dispose();
 	game.dispose();
     }
 
     @Override
     public void hide() {
+	theme.stop();
     }
 
     @Override
@@ -99,7 +97,7 @@ public class Splash implements Screen {
     }
 
     @Override
-    public void resize(int wdith, int height) {
+    public void resize(int width, int height) {
     }
 
     @Override
