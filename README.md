@@ -20,7 +20,7 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
   1. Navigate to MKS21X-Final-Project directory
   2. Compile with: `javac -d bin -cp "lib/*" -sourcepath src src/main/Main.java`
   3. Using Java 7 or later, run with: `java -cp "lib/*;bin" main.Main`  
-  Using Java 6 or earlier, run with: `java -cp "lib/*:bin" main.Main
+  Using Java 6 or earlier, run with: `java -cp "lib/*:bin" main.Main`
 
 ## Changelog
 ### [Version 0.1.3.1](https://github.com/backfrip/MKS21X-Final-Project/commit/dee9063deeb3b3a5f87b99e1337fa9843809ca60) (2015-01-12)
