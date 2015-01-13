@@ -95,6 +95,7 @@ public class Splash implements Screen {
 	Tween.registerAccessor(Sprite.class, new SpriteAccessor());
 	Tween.set(splash, SpriteAccessor.ALPHA).target(0).start(tweenManager);
 	Tween.to(splash, SpriteAccessor.ALPHA, 2).target(1).start(tweenManager);
+	tweenManager.update(Float.MIN_VALUE);
     }
 
     @Override
