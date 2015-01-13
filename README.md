@@ -24,6 +24,12 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 
 ## Changelog
 
+### [Version 0.1.3.2.1](#) (2015-01-12)
+  - Added all 4 buttons to main menu (layout still unfinished; currently looks terrible)
+
+### [Version 0.1.3.2](#) (2015-01-12)
+  - Turned text buttons into ImageButtons
+
 ### [Version 0.1.3.2](#) (2015-01-12)
   - Turned text buttons into ImageButtons
 

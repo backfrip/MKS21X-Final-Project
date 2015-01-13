@@ -18,6 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+
 /**
  * Main menu of the Smash game.
  */
@@ -66,13 +67,14 @@ public class Menu implements Screen {
 	    });
 
 	table = new Table(skin);
-	table.add(smash).row();
-	table.add(exit).row();
+	table.add(smash);
+	table.getCell(smash);
+	table.add(solo).row();
+	table.add(exit);
+	table.add(options);
 	table.setFillParent(true);
-
 	stage = new Stage();
 	stage.addActor(table);
-
 	Gdx.input.setInputProcessor(stage);
 
     }
@@ -98,6 +100,9 @@ public class Menu implements Screen {
     @Override
     public void dispose() {
 	game.dispose();
+	stage.dispose();
+	atlas.dispose();
+	skin.dispose();
     }
 
     /**
