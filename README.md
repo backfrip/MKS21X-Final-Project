@@ -24,13 +24,10 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 
 ## Changelog
 
-### [Version 0.1.3.2.1](#) (2015-01-12)
+### [Version 0.1.3.2.1](https://github.com/backfrip/MKS21X-Final-Project/commit/cb68b2582b1249c88045973ad7d267761b0dad6b) (2015-01-12)
   - Added all 4 buttons to main menu (layout still unfinished; currently looks terrible)
 
-### [Version 0.1.3.2](#) (2015-01-12)
-  - Turned text buttons into ImageButtons
-
-### [Version 0.1.3.2](#) (2015-01-12)
+### [Version 0.1.3.2](https://github.com/backfrip/MKS21X-Final-Project/commit/7bd1901670f3f7925ee84adb807245380e21f75a) (2015-01-12)
   - Turned text buttons into ImageButtons
 
 ### [Version 0.1.3.1](https://github.com/backfrip/MKS21X-Final-Project/commit/dee9063deeb3b3a5f87b99e1337fa9843809ca60) (2015-01-12)
