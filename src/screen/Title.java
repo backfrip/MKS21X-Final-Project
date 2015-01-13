@@ -17,7 +17,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class Title implements Screen {
     private SpriteBatch batch;
-    private Texture splash;
+    private Texture title;
     private Smash game;
     private OrthographicCamera camera;
     private Music advance;
@@ -31,8 +31,8 @@ public class Title implements Screen {
 	camera.setToOrtho(false, 32, 18);
 	batch = new SpriteBatch();
 	batch.setProjectionMatrix(camera.combined);
-	splash = new Texture(new FileHandle("resource/test_splash.jpg"));
-	text = new Texture(new FileHandle("resource/splashtext.png"));
+	title = new Texture(new FileHandle("resource/title.jpg"));
+	text = new Texture(new FileHandle("resource/title-text.png"));
 	advance = Gdx.audio.newMusic(new FileHandle(
 		"resource/sound/menu-advance.ogg"));
 	go = false;
@@ -45,7 +45,7 @@ public class Title implements Screen {
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	
 	batch.begin();
-	batch.draw(splash, 0, 0, 32, 18);
+	batch.draw(title, 0, 0, 32, 18);
 	if (!go) {
 	    drawText(50, 100);
 	    if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY)) {
@@ -76,7 +76,7 @@ public class Title implements Screen {
     @Override
     public void dispose() {
 	batch.dispose();
-	splash.dispose();
+	title.dispose();
 	game.dispose();
 	advance.dispose();
 	text.dispose();

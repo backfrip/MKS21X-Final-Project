@@ -6,14 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -24,10 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
  */
 public class Menu implements Screen {
     private Smash game;
-    private ImageButton smash,exit,options,solo;
-    private TextButtonStyle style;
+    private ImageButton smash, exit, options, solo;
     private Stage stage;
-    private BitmapFont font;
     private Table table;
     private Skin skin;
     private TextureAtlas atlas;
@@ -41,16 +36,22 @@ public class Menu implements Screen {
     public Menu(Smash gameRef) {
 	game = gameRef;
 
-	font = new BitmapFont();
-
-	style = new TextButtonStyle();
-	style.font = font;
-
 	atlas = new TextureAtlas("resource/main-menu/menu.pack");
 	skin = new Skin(atlas);
-	smash = new ImageButton(skin.getDrawable("smash"),skin.getDrawable("smash-pressed"),skin.getDrawable("smash-selected"));
-	options = new ImageButton(skin.getDrawable("options"),skin.getDrawable("options-pressed"),skin.getDrawable("options-selected"));
-	solo = new ImageButton(skin.getDrawable("solo"),skin.getDrawable("solo-pressed"),skin.getDrawable("solo-selected"));
+	smash = new ImageButton(skin.getDrawable("smash"),
+		skin.getDrawable("smash-pressed"),
+		skin.getDrawable("smash-selected"));
+	options = new ImageButton(skin.getDrawable("options"),
+		skin.getDrawable("options-pressed"),
+		skin.getDrawable("options-selected"));
+	solo = new ImageButton(skin.getDrawable("solo"),
+		skin.getDrawable("solo-pressed"),
+		skin.getDrawable("solo-selected"));
+	exit = new ImageButton(skin.getDrawable("quit"),
+		skin.getDrawable("quit-pressed"),
+		skin.getDrawable("quit-selected"));
+
+
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
@@ -58,21 +59,21 @@ public class Menu implements Screen {
 	    }
 	});
 
-	exit = new ImageButton(skin.getDrawable("quit"),skin.getDrawable("quit-pressed"),skin.getDrawable("quit-selected"));
 	exit.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
 		Gdx.app.exit();
 	    }
-	    });
+	});
+
 
 	table = new Table(skin);
 	table.add(smash);
-	table.getCell(smash);
 	table.add(solo).row();
 	table.add(exit);
 	table.add(options);
 	table.setFillParent(true);
+
 	stage = new Stage();
 	stage.addActor(table);
 	Gdx.input.setInputProcessor(stage);
@@ -92,7 +93,7 @@ public class Menu implements Screen {
 
 	if (Gdx.input.isKeyJustPressed(Keys.T))
 	    swapTheme();
-	
+
 	if (Gdx.input.isKeyJustPressed(Keys.ESCAPE))
 	    Gdx.app.exit();
     }
