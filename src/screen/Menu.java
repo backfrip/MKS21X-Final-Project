@@ -12,21 +12,24 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 /**
  * Main menu of the Smash game.
  */
 public class Menu implements Screen {
     private Smash game;
-    private TextButton smash, exit;
+    private ImageButton smash,exit,options,solo;
     private TextButtonStyle style;
     private Stage stage;
     private BitmapFont font;
     private Table table;
-
-    // private ImageButton smash,solo,exit,options;
+    private Skin skin;
+    private TextureAtlas atlas;
 
     /**
      * Creates a new Menu screen. Defines and positions various buttons used.
@@ -42,11 +45,11 @@ public class Menu implements Screen {
 	style = new TextButtonStyle();
 	style.font = font;
 
-	smash = new TextButton("Smash", style);
-
-	// smash=new ImageButton(new TextureRegionDrawable(new TextureRegion(new
-	// Texture(new FileHandle("resource/main-menu/smash.png"))))); doesn't
-	// work
+	atlas = new TextureAtlas("resource/main-menu/menu.pack");
+	skin = new Skin(atlas);
+	smash = new ImageButton(skin.getDrawable("smash"),skin.getDrawable("smash-pressed"),skin.getDrawable("smash-selected"));
+	options = new ImageButton(skin.getDrawable("options"),skin.getDrawable("options-pressed"),skin.getDrawable("options-selected"));
+	solo = new ImageButton(skin.getDrawable("solo"),skin.getDrawable("solo-pressed"),skin.getDrawable("solo-selected"));
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
@@ -54,15 +57,15 @@ public class Menu implements Screen {
 	    }
 	});
 
-	exit = new TextButton("Exit Game", style);
+	exit = new ImageButton(skin.getDrawable("quit"),skin.getDrawable("quit-pressed"),skin.getDrawable("quit-selected"));
 	exit.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
 		Gdx.app.exit();
 	    }
-	});
+	    });
 
-	table = new Table();
+	table = new Table(skin);
 	table.add(smash).row();
 	table.add(exit).row();
 	table.setFillParent(true);
@@ -71,6 +74,7 @@ public class Menu implements Screen {
 	stage.addActor(table);
 
 	Gdx.input.setInputProcessor(stage);
+
     }
 
     /**
