@@ -3,67 +3,39 @@ menu.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-options-pressed
-  rotate: false
-  xy: 0, 888
-  size: 752, 120
-  orig: 752, 120
-  offset: 0, 0
-  index: -1
-options-selected
-  rotate: false
-  xy: 0, 768
-  size: 752, 120
-  orig: 752, 120
-  offset: 0, 0
-  index: -1
-options
-  rotate: false
-  xy: 0, 664
-  size: 736, 104
-  orig: 736, 104
-  offset: 0, 0
-  index: -1
 smash-pressed
   rotate: false
-  xy: 0, 224
+  xy: 0, 560
   size: 704, 440
   orig: 704, 440
   offset: 0, 0
   index: -1
+smash-selected
+  rotate: false
+  xy: 0, 120
+  size: 704, 440
+  orig: 704, 440
+  offset: 0, 0
+  index: -1
+options-pressed
+  rotate: false
+  xy: 0, 0
+  size: 752, 120
+  orig: 752, 120
+  offset: 0, 0
+  index: -1
 graybg
   rotate: false
-  xy: 704, 484
+  xy: 704, 820
   size: 320, 180
   orig: 320, 180
   offset: 0, 0
   index: -1
 mainmenu
   rotate: false
-  xy: 704, 304
+  xy: 704, 640
   size: 320, 180
   orig: 320, 180
-  offset: 0, 0
-  index: -1
-quit-pressed
-  rotate: false
-  xy: 0, 104
-  size: 440, 120
-  orig: 440, 120
-  offset: 0, 0
-  index: -1
-quit-selected
-  rotate: false
-  xy: 440, 104
-  size: 440, 120
-  orig: 440, 120
-  offset: 0, 0
-  index: -1
-quit
-  rotate: false
-  xy: 0, 0
-  size: 424, 104
-  orig: 424, 104
   offset: 0, 0
   index: -1
 
@@ -71,18 +43,25 @@ menu2.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-smash-selected
+smash
   rotate: false
-  xy: 0, 440
+  xy: 0, 560
   size: 704, 440
   orig: 704, 440
   offset: 0, 0
   index: -1
 solo-pressed
   rotate: false
-  xy: 0, 0
+  xy: 0, 120
   size: 692, 440
   orig: 692, 440
+  offset: 0, 0
+  index: -1
+options-selected
+  rotate: false
+  xy: 0, 0
+  size: 752, 120
+  orig: 752, 120
   offset: 0, 0
   index: -1
 
@@ -92,16 +71,23 @@ filter: Nearest,Nearest
 repeat: none
 solo-selected
   rotate: false
-  xy: 0, 408
+  xy: 0, 560
   size: 692, 440
   orig: 692, 440
   offset: 0, 0
   index: -1
-smash
+solo
+  rotate: false
+  xy: 0, 120
+  size: 692, 440
+  orig: 692, 440
+  offset: 0, 0
+  index: -1
+options
   rotate: false
   xy: 0, 0
-  size: 672, 408
-  orig: 672, 408
+  size: 752, 120
+  orig: 752, 120
   offset: 0, 0
   index: -1
 
@@ -109,10 +95,24 @@ menu4.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-solo
+quit-pressed
+  rotate: false
+  xy: 0, 120
+  size: 440, 120
+  orig: 440, 120
+  offset: 0, 0
+  index: -1
+quit-selected
   rotate: false
   xy: 0, 0
-  size: 660, 408
-  orig: 660, 408
+  size: 440, 120
+  orig: 440, 120
+  offset: 0, 0
+  index: -1
+quit
+  rotate: false
+  xy: 440, 120
+  size: 440, 120
+  orig: 440, 120
   offset: 0, 0
   index: -1

@@ -65,17 +65,19 @@ public class Menu implements Screen {
 		Gdx.app.exit();
 	    }
 	});
-
-
-	table = new Table(skin);
-	table.add(smash);
-	table.add(solo).row();
-	table.add(exit);
-	table.add(options);
-	table.setFillParent(true);
-
 	stage = new Stage();
-	stage.addActor(table);
+	stage.addActor(exit);
+	exit.setX(10*4);
+	exit.setY(23*4);
+	stage.addActor(options);
+	options.setX(122*4);
+	options.setY(23*4);
+	stage.addActor(smash);
+	smash.setX(10*4);
+	smash.setY(58*4);
+	stage.addActor(solo);
+	solo.setX(141*4);
+	solo.setY(58*4);
 	Gdx.input.setInputProcessor(stage);
 
     }
@@ -85,7 +87,8 @@ public class Menu implements Screen {
      */
     @Override
     public void render(float arg0) {
-	Gdx.gl.glClearColor(0, 0, 0, 1);
+	float g=(float)140/(float)255;
+	Gdx.gl.glClearColor(g, g, g, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 	stage.act();
