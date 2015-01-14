@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -23,7 +22,6 @@ public class Menu implements Screen {
     private Smash game;
     private ImageButton smash, exit, options, solo;
     private Stage stage;
-    private Table table;
     private Skin skin;
     private TextureAtlas atlas;
 
