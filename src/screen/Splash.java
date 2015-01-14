@@ -1,6 +1,7 @@
 package screen;
 
 import main.*;
+import misc.SpriteAccessor;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
