@@ -120,7 +120,7 @@ public class JeremysBox2DTest implements Screen {
 		
 		//platform test
 		groundShape = new ChainShape();
-		groundShape.createChain(new Vector2[] {new Vector2(-5, 0), new Vector2(5, 0)});
+		groundShape.createChain(new Vector2[] {new Vector2(-5, 10), new Vector2(5, 10)});
 		
 		// fixture definition
 		fixtureDef.shape = groundShape;
