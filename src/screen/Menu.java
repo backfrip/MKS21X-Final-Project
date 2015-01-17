@@ -95,9 +95,6 @@ public class Menu implements Screen {
 
 	if (Gdx.input.isKeyJustPressed(Keys.T))
 	    swapTheme();
-
-	if (Gdx.input.isKeyJustPressed(Keys.ESCAPE))
-	    Gdx.app.exit();
     }
 
     @Override

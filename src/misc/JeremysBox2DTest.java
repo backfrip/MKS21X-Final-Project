@@ -73,6 +73,7 @@ public class JeremysBox2DTest implements Screen {
 			switch(keycode) {
 			case Keys.ESCAPE:
 			    gameRef.setScreen(new Menu(gameRef));
+			    return true;
 			}
 			return false;
 		    }

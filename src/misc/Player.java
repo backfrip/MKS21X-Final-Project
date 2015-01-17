@@ -17,7 +17,7 @@ public class Player extends InputAdapter {
 	private Fixture fixture;
 	public final float width, height;
 	private Vector2 velocity = new Vector2();
-	private float movementForce = 500;
+	private float movementForce = 50;
 
 	public Player(World world, float x, float y, float width) {
 		this.width = width;
@@ -54,6 +54,9 @@ public class Player extends InputAdapter {
 		case Keys.D:
 			velocity.x = movementForce;
 			break;
+		case Keys.W:
+		    //TODO check if he is touching the ground
+		       velocity.y = 100;
 		default:
 			return false;
 		}
@@ -64,6 +67,8 @@ public class Player extends InputAdapter {
 	public boolean keyUp(int keycode) {
 		if(keycode == Keys.A || keycode == Keys.D)
 			velocity.x = 0;
+		if(keycode == Keys.W)
+		    velocity.y = 0;
 		else
 			return false;
 		return true;
