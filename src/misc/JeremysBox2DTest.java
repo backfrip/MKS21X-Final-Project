@@ -4,32 +4,43 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.files.FileHandle;
 
 public class JeremysBox2DTest implements Screen {
     
     private World world;
     private Box2DDebugRenderer debugRenderer;
     private OrthographicCamera camera;
-    
+    private Body bottleModel;
+    private Vector2 bottleModelOrigin;
+    private Sprite bottleSprite;
+
     private final float TIMESTEP = 1 / 60f;
     private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
     
-	@Override
-	public void render(float delta) {
-	    Gdx.gl.glClearColor(0, 0, 0, 1);
-	    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	    
-	    debugRenderer.render(world, camera.combined);
-	    
-	    world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
-	}
+    @Override
+    public void render(float delta) {
+	Gdx.gl.glClearColor(0, 0, 0, 1);
+	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+	
+	debugRenderer.render(world, camera.combined);
+	
+	world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
+	Vector2 bottlePos = bottleModel.getPosition().sub(bottleModelOrigin);
+	bottleSprite.setPosition(bottlePos.x, bottlePos.y);
+	bottleSprite.setOrigin(bottleModelOrigin.x, bottleModelOrigin.y);
+	bottleSprite.setRotation(bottleModel.getAngle() * MathUtils.radiansToDegrees);
+    }
     
     @Override
     public void resize(int width, int height) {
@@ -61,6 +72,7 @@ public class JeremysBox2DTest implements Screen {
 	world.createBody(ballDef).createFixture(fixtureDef);
 	
 	shape.dispose();
+	createBottle();
     }
 
     @Override
@@ -81,5 +93,17 @@ public class JeremysBox2DTest implements Screen {
 	world.dispose();
 	debugRenderer.dispose();
     }
-    
+    private void createBottle() {
+	BodyEditorLoader loader = new BodyEditorLoader(new FileHandle("resource/test/test.json"));
+	BodyDef bd = new BodyDef();
+	bd.position.set(0, 0);
+	bd.type = BodyType.DynamicBody;
+	FixtureDef fd = new FixtureDef();
+	fd.density = 1;
+	fd.friction = 0.5f;
+	fd.restitution = 0.3f;
+	bottleModel = world.createBody(bd);
+	loader.attachFixture(bottleModel, "test01", fd, 1); 
+	bottleModelOrigin = loader.getOrigin("test01", 1).cpy();
+    }
 }
