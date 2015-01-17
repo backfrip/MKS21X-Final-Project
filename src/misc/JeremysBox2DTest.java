@@ -137,6 +137,7 @@ public class JeremysBox2DTest implements Screen {
 		box.createFixture(fixtureDef);
 		
 		boxShape.dispose();
+		world.setContactFilter(player);
 	}
 
 	@Override

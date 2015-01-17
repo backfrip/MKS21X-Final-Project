@@ -10,8 +10,12 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactFilter;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
 
-public class Player extends InputAdapter {
+public class Player extends InputAdapter implements ContactFilter {
 
 	private Body body;
 	private Fixture fixture;
@@ -89,5 +93,11 @@ public class Player extends InputAdapter {
 	public Fixture getFixture() {
 		return fixture;
 	}
+    @Override
+    public boolean shouldCollide(Fixture fixtureA,Fixture fixtureB){
+	if(fixtureA==fixture || fixtureB==fixture){
+	    return body.getLinearVelocity().y>0
+	}
+    }
 
 }
