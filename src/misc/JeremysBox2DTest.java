@@ -118,6 +118,19 @@ public class JeremysBox2DTest implements Screen {
 		
 		groundShape.dispose();
 		
+		//platform test
+		groundShape = new ChainShape();
+		groundShape.createChain(new Vector2[] {new Vector2(-5, 0), new Vector2(5, 0)});
+		
+		// fixture definition
+		fixtureDef.shape = groundShape;
+		fixtureDef.friction = .5f;
+		fixtureDef.restitution = 0;
+		
+		world.createBody(bodyDef).createFixture(fixtureDef);
+		
+		groundShape.dispose();
+		
 		// BOX
 		// body definition
 		bodyDef.type = BodyType.DynamicBody;
