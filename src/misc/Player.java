@@ -96,8 +96,9 @@ public class Player extends InputAdapter implements ContactFilter {
     @Override
     public boolean shouldCollide(Fixture fixtureA,Fixture fixtureB){
 	if(fixtureA==fixture || fixtureB==fixture){
-	    return body.getLinearVelocity().y>0
+	    return body.getLinearVelocity().y<0;//not a very good way to do one-way platforms!
 	}
+	return false;
     }
 
 }
