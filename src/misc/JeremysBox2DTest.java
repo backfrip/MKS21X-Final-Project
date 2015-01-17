@@ -37,8 +37,7 @@ public class JeremysBox2DTest implements Screen {
 		
 		world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
 		box.applyForceToCenter(movement, true);
-		
-		camera.position.set(box.getPosition().x, box.getPosition().y, 0);
+	        
 		camera.update();
 		
 		debugRenderer.render(world, camera.combined);
