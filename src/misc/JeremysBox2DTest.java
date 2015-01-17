@@ -1,5 +1,7 @@
 package misc;
 
+import main.*;
+import screen.*;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -16,6 +18,8 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputMultiplexer;
 
 public class JeremysBox2DTest implements Screen {
 	
@@ -29,19 +33,24 @@ public class JeremysBox2DTest implements Screen {
 	private float speed = 250;
 	private Vector2 movement = new Vector2();
 	private Body box;
+    private Player player;
+    private Smash gameRef;
+    public JeremysBox2DTest(Smash game){
+	gameRef=game;
+    }
+    @Override
+    public void render(float delta) {
+	Gdx.gl.glClearColor(0, 0, 0, 1);
+	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	
-	@Override
-	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
-		box.applyForceToCenter(movement, true);
-	        
-		camera.update();
-		
-		debugRenderer.render(world, camera.combined);
-	}
+	player.update();
+	world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
+	box.applyForceToCenter(movement, true);
+	
+	camera.update();
+	
+	debugRenderer.render(world, camera.combined);
+    }
 
 	@Override
 	public void resize(int width, int height) {
@@ -52,44 +61,22 @@ public class JeremysBox2DTest implements Screen {
 
 	@Override
 	public void show() {
-		world = new World(new Vector2(0, -9.81f), true);
-		debugRenderer = new Box2DDebugRenderer();
-		
-		camera = new OrthographicCamera();
-		
-		Gdx.input.setInputProcessor(new InputStuff() {
-			@Override
-			public boolean keyDown(int keycode) {
-				switch(keycode) {
-				case Keys.W:
-					movement.y = speed;
-					break;
-				case Keys.A:
-					movement.x = -speed;
-					break;
-				case Keys.S:
-					movement.y = -speed;
-					break;
-				case Keys.D:
-					movement.x = speed;
-				}
-				return true;
+	    world = new World(new Vector2(0, -9.81f), true);
+	    debugRenderer = new Box2DDebugRenderer();
+	    
+	    camera = new OrthographicCamera();
+	    player = new Player(world,0,5,1);
+	    Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter() {
+		    
+		    @Override
+		    public boolean keyDown(int keycode) {
+			switch(keycode) {
+			case Keys.ESCAPE:
+			    gameRef.setScreen(new Menu(gameRef));
 			}
-			
-			@Override
-			public boolean keyUp(int keycode) {
-				switch(keycode) {
-				case Keys.W:
-				case Keys.S:
-					movement.y = 0;
-					break;
-				case Keys.A:
-				case Keys.D:
-					movement.x = 0;
-				}
-				return true;
-			}
-		});
+			return false;
+		    }
+		}, player));
 		
 		// BALL
 		// body definition
