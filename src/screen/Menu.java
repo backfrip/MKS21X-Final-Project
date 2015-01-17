@@ -1,6 +1,7 @@
 package screen;
 
 import main.*;
+import misc.JeremysBox2DTest;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -53,7 +54,7 @@ public class Menu implements Screen {
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
-		game.setScreen(new Char(game));
+		game.setScreen(new JeremysBox2DTest());
 	    }
 	});
 
