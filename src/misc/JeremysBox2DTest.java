@@ -22,14 +22,13 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 
 public class JeremysBox2DTest implements Screen {
+    private World world;
+    private Box2DDebugRenderer debugRenderer;
+    private OrthographicCamera camera;
 	
-	private World world;
-	private Box2DDebugRenderer debugRenderer;
-	private OrthographicCamera camera;
-	
-	private final float TIMESTEP = 1 / 60f;
-	private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
-	
+    private final float TIMESTEP = 1 / 60f;
+    private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
+    
     private float speed = 250;
     private Vector2 movement = new Vector2();
     private Body box;
@@ -47,7 +46,6 @@ public class JeremysBox2DTest implements Screen {
 	p1.update();
 	p2.update();
 	world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
-	box.applyForceToCenter(movement, true);
 	
 	camera.update();
 	
@@ -68,7 +66,7 @@ public class JeremysBox2DTest implements Screen {
 	    
 	    camera = new OrthographicCamera();
 	    p1 = new Player(world,0,5,1,1);
-	    p2 = new Player(world,0,5,4,2);
+	    p2 = new Player(world,2,5,1,2);
 	    Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter() {
 		    
 		    @Override
@@ -133,27 +131,6 @@ public class JeremysBox2DTest implements Screen {
 		world.createBody(bodyDef).createFixture(fixtureDef);
 		
 		groundShape.dispose();
-		
-		// BOX
-		// body definition
-		bodyDef.type = BodyType.DynamicBody;
-		bodyDef.position.set(2.25f, 10);
-		
-		// box shape
-		PolygonShape boxShape = new PolygonShape();
-		boxShape.setAsBox(.5f, 1);
-		
-		// fixture definition
-		fixtureDef.shape = boxShape;
-		fixtureDef.friction = .75f;
-		fixtureDef.restitution = .1f;
-		fixtureDef.density = 5;
-		
-		box = world.createBody(bodyDef);
-		box.createFixture(fixtureDef);
-		
-		boxShape.dispose();
-		world.setContactFilter(p1);
 	}
 
 	@Override
@@ -168,7 +145,6 @@ public class JeremysBox2DTest implements Screen {
 	@Override
 	public void resume() {
 	}
-
 	@Override
 	public void dispose() {
 		world.dispose();

@@ -15,7 +15,7 @@ import com.badlogic.gdx.physics.box2d.ContactFilter;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 
-public class Player extends InputAdapter implements ContactFilter {
+public class Player extends InputAdapter {
 
     private Body body;
     private Fixture fixture;
@@ -90,6 +90,8 @@ public class Player extends InputAdapter implements ContactFilter {
 
 	@Override
 	public boolean keyUp(int keycode) {
+	    switch(pNum){
+	    case 1:
 		if(keycode == Keys.A || keycode == Keys.D)
 			velocity.x = 0;
 		if(keycode == Keys.W)
@@ -97,6 +99,16 @@ public class Player extends InputAdapter implements ContactFilter {
 		else
 			return false;
 		return true;
+	    case 2:
+		if(keycode == Keys.LEFT || keycode == Keys.RIGHT)
+		    velocity.x = 0;
+		if(keycode == Keys.UP)
+		    velocity.y = 0;
+		else
+		    return false;
+		return true;
+	    }
+	    return false;
 	}
 
 	public float getRestitution() {
@@ -113,13 +125,12 @@ public class Player extends InputAdapter implements ContactFilter {
 
 	public Fixture getFixture() {
 		return fixture;
-	}
+	}/*
     @Override
     public boolean shouldCollide(Fixture fixtureA,Fixture fixtureB){
 	if(fixtureA==fixture || fixtureB==fixture){
 	    return body.getLinearVelocity().y<0;//not a very good way to do one-way platforms!
 	}
 	return false;
-    }
-
+	}*/
 }

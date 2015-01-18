@@ -19,12 +19,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 /**
  * Main menu of the Smash game.
  */
-public class Menu implements Screen {
+public class Settings implements Screen {
     private Smash game;
-    private ImageButton smash, exit, options, solo;
+    private ImageButton fullscreen,back;
     private Stage stage;
     private Skin skin;
     private TextureAtlas atlas;
+    private boolean full;
 
     /**
      * Creates a new Menu screen. Defines and positions various buttons used.
@@ -32,56 +33,40 @@ public class Menu implements Screen {
      * @param gameRef
      *            Game linked to.
      */
-    public Menu(Smash gameRef) {
+    public Settings(Smash gameRef) {
 	game = gameRef;
 
-	atlas = new TextureAtlas("resource/main-menu/menu.pack");
+	atlas = new TextureAtlas("resource/settings/settings.pack");
 	skin = new Skin(atlas);
-	smash = new ImageButton(skin.getDrawable("smash"),
-		skin.getDrawable("smash-pressed"),
-		skin.getDrawable("smash-selected"));
-	options = new ImageButton(skin.getDrawable("options"),
-		skin.getDrawable("options-pressed"),
-		skin.getDrawable("options-selected"));
-	solo = new ImageButton(skin.getDrawable("solo"),
-		skin.getDrawable("solo-pressed"),
-		skin.getDrawable("solo-selected"));
-	exit = new ImageButton(skin.getDrawable("quit"),
-		skin.getDrawable("quit-pressed"),
-		skin.getDrawable("quit-selected"));
+	fullscreen = new ImageButton(skin.getDrawable("fullscreen-no"),
+		skin.getDrawable("fullscreen-yea"));
+	back = new ImageButton(skin.getDrawable("goback"));
+	full = false;
 
-
-	smash.addListener(new ClickListener() {
+	back.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
-		game.setScreen(new JeremysBox2DTest(game));
+		game.setScreen(new Menu(game));
 	    }
 	});
-	options.addListener(new ClickListener() {
+
+	fullscreen.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
-		game.setScreen(new Settings(game));
-	    }
-	});
-	exit.addListener(new ClickListener() {
-	    @Override
-	    public void clicked(InputEvent event, float x, float y) {
-		Gdx.app.exit();
+		if(!full){
+		    Gdx.graphics.setDisplayMode(1280, 720, true);
+		}else{
+		    Gdx.graphics.setDisplayMode(1280, 720, false);
+		}
 	    }
 	});
 	stage = new Stage();
-	stage.addActor(exit);
-	exit.setX(10*4);
-	exit.setY(23*4);
-	stage.addActor(options);
-	options.setX(122*4);
-	options.setY(23*4);
-	stage.addActor(smash);
-	smash.setX(10*4);
-	smash.setY(58*4);
-	stage.addActor(solo);
-	solo.setX(141*4);
-	solo.setY(58*4);
+	stage.addActor(back);
+	back.setX(10*4);
+	back.setY(155*4);
+	stage.addActor(fullscreen);
+	fullscreen.setX(20*4);
+	fullscreen.setY(120*4);
 	Gdx.input.setInputProcessor(stage);
 
     }
