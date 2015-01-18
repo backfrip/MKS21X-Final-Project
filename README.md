@@ -25,6 +25,11 @@ A crossover fighting game type program based on the legendary Atari 2600 Video C
 
 ## Changelog
 
+### [Version 0.1.3.4](https://github.com/backfrip/MKS21X-Final-Project/commit/495dc50221a14f4a45cb2cc8ce9d6ad01483d09f) (2015-01-18)
+
+##### New Features
+  - Settings menu w/ ability to toggle fullscreen
+
 ### [Version 0.1.3.3](https://github.com/backfrip/MKS21X-Final-Project/commit/289cbfb968cd4462774f6af2fa76a872412055f7) (2015-01-13)
 
 ##### New Features
