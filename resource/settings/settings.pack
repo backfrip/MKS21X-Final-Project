@@ -5,22 +5,29 @@ filter: Nearest,Nearest
 repeat: none
 fullscreen-no
   rotate: false
-  xy: 0, 176
+  xy: 1, 111
   size: 1180, 92
   orig: 1180, 92
   offset: 0, 0
   index: -1
 fullscreen-yea
   rotate: false
-  xy: 0, 84
+  xy: 1, 17
   size: 1180, 92
   orig: 1180, 92
   offset: 0, 0
   index: -1
-goback
+back-pressed
   rotate: false
-  xy: 0, 0
-  size: 112, 84
-  orig: 112, 84
+  xy: 1183, 103
+  size: 112, 100
+  orig: 112, 100
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 1183, 1
+  size: 112, 100
+  orig: 112, 100
   offset: 0, 0
   index: -1

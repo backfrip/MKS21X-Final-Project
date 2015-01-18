@@ -39,8 +39,10 @@ public class Settings implements Screen {
 	atlas = new TextureAtlas("resource/settings/settings.pack");
 	skin = new Skin(atlas);
 	fullscreen = new ImageButton(skin.getDrawable("fullscreen-no"),
+				     skin.getDrawable("fullscreen-yea"),
 		skin.getDrawable("fullscreen-yea"));
-	back = new ImageButton(skin.getDrawable("goback"));
+	back = new ImageButton(skin.getDrawable("back"),
+			       skin.getDrawable("back-pressed"));
 	full = false;
 
 	back.addListener(new ClickListener() {
@@ -55,6 +57,7 @@ public class Settings implements Screen {
 	    public void clicked(InputEvent event, float x, float y) {
 		if(!full){
 		    Gdx.graphics.setDisplayMode(1280, 720, true);
+		    full=true;
 		}else{
 		    Gdx.graphics.setDisplayMode(1280, 720, false);
 		}
