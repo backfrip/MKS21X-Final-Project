@@ -17,33 +17,35 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 
 public class Player extends InputAdapter implements ContactFilter {
 
-	private Body body;
-	private Fixture fixture;
-	public final float width, height;
-	private Vector2 velocity = new Vector2();
-	private float movementForce = 50;
+    private Body body;
+    private Fixture fixture;
+    public final float width, height;
+    private Vector2 velocity = new Vector2();
+    private float movementForce = 50;
+    private int pNum;
 
-	public Player(World world, float x, float y, float width) {
-		this.width = width;
-		height = width * 2;
-
-		BodyDef bodyDef = new BodyDef();
-		bodyDef.type = BodyType.DynamicBody;
-		bodyDef.position.set(x, y);
-		bodyDef.fixedRotation = true;
-
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(width / 2, height / 2);
-
-		FixtureDef fixtureDef = new FixtureDef();
-		fixtureDef.shape = shape;
-		fixtureDef.restitution = .1f;
-		fixtureDef.friction = .8f;
-		fixtureDef.density = 3;
-
-		body = world.createBody(bodyDef);
-		fixture = body.createFixture(fixtureDef);
-	}
+    public Player(World world, float x, float y, float width, int player) {
+	this.width = width;
+	height = width * 2;
+	
+	BodyDef bodyDef = new BodyDef();
+	bodyDef.type = BodyType.DynamicBody;
+	bodyDef.position.set(x, y);
+	bodyDef.fixedRotation = true;
+	
+	PolygonShape shape = new PolygonShape();
+	shape.setAsBox(width / 2, height / 2);
+	
+	FixtureDef fixtureDef = new FixtureDef();
+	fixtureDef.shape = shape;
+	fixtureDef.restitution = .1f;
+	fixtureDef.friction = .8f;
+	fixtureDef.density = 3;
+	
+	body = world.createBody(bodyDef);
+	fixture = body.createFixture(fixtureDef);
+	pNum=player;
+    }
 
 	public void update() {
 		body.applyForceToCenter(velocity, true);
@@ -51,19 +53,38 @@ public class Player extends InputAdapter implements ContactFilter {
 
 	@Override
 	public boolean keyDown(int keycode) {
+	    switch(pNum){
+	    case 1:
 		switch(keycode) {
 		case Keys.A:
-			velocity.x = -movementForce;
-			break;
+		    velocity.x = -movementForce;
+		    break;
 		case Keys.D:
-			velocity.x = movementForce;
-			break;
+		    velocity.x = movementForce;
+		    break;
 		case Keys.W:
 		    //TODO check if he is touching the ground
-		       velocity.y = 100;
+		    velocity.y = 500;
 		default:
-			return false;
+		    return false;
 		}
+		break;
+	    case 2:
+		switch(keycode) {
+		case Keys.LEFT:
+		    velocity.x = -movementForce;
+		    break;
+		case Keys.RIGHT:
+		    velocity.x = movementForce;
+		    break;
+		case Keys.UP:
+		    //TODO check if he is touching the ground
+		    velocity.y = 100;
+		default:
+		    return false;
+		}
+		break;
+	    }
 		return true;
 	}
 

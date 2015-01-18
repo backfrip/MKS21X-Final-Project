@@ -30,10 +30,11 @@ public class JeremysBox2DTest implements Screen {
 	private final float TIMESTEP = 1 / 60f;
 	private final int VELOCITYITERATIONS = 8, POSITIONITERATIONS = 3;
 	
-	private float speed = 250;
-	private Vector2 movement = new Vector2();
-	private Body box;
-    private Player player;
+    private float speed = 250;
+    private Vector2 movement = new Vector2();
+    private Body box;
+    private Player p1,p2,p3,p4;
+    private Boolean fourGuys,threeGuys;
     private Smash gameRef;
     public JeremysBox2DTest(Smash game){
 	gameRef=game;
@@ -43,7 +44,8 @@ public class JeremysBox2DTest implements Screen {
 	Gdx.gl.glClearColor(0, 0, 0, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	
-	player.update();
+	p1.update();
+	p2.update();
 	world.step(TIMESTEP, VELOCITYITERATIONS, POSITIONITERATIONS);
 	box.applyForceToCenter(movement, true);
 	
@@ -65,7 +67,8 @@ public class JeremysBox2DTest implements Screen {
 	    debugRenderer = new Box2DDebugRenderer();
 	    
 	    camera = new OrthographicCamera();
-	    player = new Player(world,0,5,1);
+	    p1 = new Player(world,0,5,1,1);
+	    p2 = new Player(world,0,5,4,2);
 	    Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter() {
 		    
 		    @Override
@@ -77,7 +80,7 @@ public class JeremysBox2DTest implements Screen {
 			}
 			return false;
 		    }
-		}, player));
+		}, p1, p2));
 		
 		// BALL
 		// body definition
@@ -150,7 +153,7 @@ public class JeremysBox2DTest implements Screen {
 		box.createFixture(fixtureDef);
 		
 		boxShape.dispose();
-		world.setContactFilter(player);
+		world.setContactFilter(p1);
 	}
 
 	@Override
