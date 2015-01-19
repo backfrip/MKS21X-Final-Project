@@ -1,4 +1,4 @@
-ackage screen;
+package screen;
 
 import main.Smash;
 
