@@ -28,7 +28,7 @@ public class Settings implements Screen {
     private boolean full;
 
     /**
-     * Creates a new Menu screen. Defines and positions various buttons used.
+     * Creates a new Settings screen. Defines and positions various buttons used.
      * 
      * @param gameRef
      *            Game linked to.
@@ -48,7 +48,7 @@ public class Settings implements Screen {
 	back.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
-		game.setScreen(new Menu(game));
+		game.setScreen(Smash.menu);
 	    }
 	});
 
@@ -70,7 +70,6 @@ public class Settings implements Screen {
 	stage.addActor(fullscreen);
 	fullscreen.setX(20 * 4);
 	fullscreen.setY(120 * 4);
-	Gdx.input.setInputProcessor(stage);
 
     }
 
@@ -100,6 +99,7 @@ public class Settings implements Screen {
 
     @Override
     public void show() {
+	Gdx.input.setInputProcessor(stage);
     }
 
     @Override

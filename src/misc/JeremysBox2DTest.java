@@ -2,6 +2,7 @@ package misc;
 
 import main.*;
 import screen.*;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -75,7 +76,7 @@ public class JeremysBox2DTest implements Screen {
 	    public boolean keyDown(int keycode) {
 		switch (keycode) {
 		case Keys.ESCAPE:
-		    gameRef.setScreen(new Menu(gameRef));
+		    gameRef.setScreen(Smash.menu);
 		    return true;
 		}
 		return false;

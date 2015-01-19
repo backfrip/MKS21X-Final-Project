@@ -2,6 +2,7 @@ package screen;
 
 import main.*;
 import misc.JeremysBox2DTest;
+import misc.Test2.Box2DTest2;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -54,12 +55,14 @@ public class Menu implements Screen {
 	smash.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
-		game.setScreen(new JeremysBox2DTest(game));
+		smash.toggle();
+		game.setScreen(new Box2DTest2(game));
 	    }
 	});
 	options.addListener(new ClickListener() {
 	    @Override
 	    public void clicked(InputEvent event, float x, float y) {
+		options.toggle();
 		game.setScreen(new Settings(game));
 	    }
 	});
@@ -82,8 +85,6 @@ public class Menu implements Screen {
 	stage.addActor(solo);
 	solo.setX(141 * 4);
 	solo.setY(58 * 4);
-	Gdx.input.setInputProcessor(stage);
-
     }
 
     /**
@@ -100,6 +101,8 @@ public class Menu implements Screen {
 
 	if (Gdx.input.isKeyJustPressed(Keys.T))
 	    Smash.swapTheme();
+	if(Gdx.input.isKeyJustPressed(Keys.ESCAPE))
+	    Gdx.app.exit();
     }
 
     @Override
@@ -115,6 +118,7 @@ public class Menu implements Screen {
      */
     @Override
     public void show() {
+	Gdx.input.setInputProcessor(stage);
 	if (!Smash.theme0.isPlaying() && !Smash.theme1.isPlaying()) {
 	    if (MathUtils.random(1) == 0)
 		Smash.theme0.play();

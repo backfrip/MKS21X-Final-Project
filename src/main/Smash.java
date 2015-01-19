@@ -4,6 +4,7 @@ import screen.*;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 
@@ -14,6 +15,7 @@ import com.badlogic.gdx.files.FileHandle;
 public class Smash extends Game {
     public static Music theme0, theme1;
     public static Menu menu;
+    public static InputProcessor inputProcessor;
 
     /**
      * Creates new Smash game. Menu themes are loaded as static Music.
@@ -29,6 +31,8 @@ public class Smash extends Game {
 	theme1.setLooping(true);
 
 	menu = new Menu(this);
+	
+	inputProcessor = Gdx.input.getInputProcessor();
     }
 
     @Override
