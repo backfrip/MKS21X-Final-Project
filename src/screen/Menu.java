@@ -71,17 +71,17 @@ public class Menu implements Screen {
 	});
 	stage = new Stage();
 	stage.addActor(exit);
-	exit.setX(10*4);
-	exit.setY(23*4);
+	exit.setX(10 * 4);
+	exit.setY(23 * 4);
 	stage.addActor(options);
-	options.setX(122*4);
-	options.setY(23*4);
+	options.setX(122 * 4);
+	options.setY(23 * 4);
 	stage.addActor(smash);
-	smash.setX(10*4);
-	smash.setY(58*4);
+	smash.setX(10 * 4);
+	smash.setY(58 * 4);
 	stage.addActor(solo);
-	solo.setX(141*4);
-	solo.setY(58*4);
+	solo.setX(141 * 4);
+	solo.setY(58 * 4);
 	Gdx.input.setInputProcessor(stage);
 
     }
@@ -91,7 +91,7 @@ public class Menu implements Screen {
      */
     @Override
     public void render(float arg0) {
-	float g=(float)140/(float)255;
+	float g = (float) 140 / (float) 255;
 	Gdx.gl.glClearColor(g, g, g, 1);
 	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -99,7 +99,7 @@ public class Menu implements Screen {
 	stage.draw();
 
 	if (Gdx.input.isKeyJustPressed(Keys.T))
-	    swapTheme();
+	    Smash.swapTheme();
     }
 
     @Override
@@ -114,22 +114,12 @@ public class Menu implements Screen {
      * Called when Menu screen is showed. Plays one of two themes.
      */
     @Override
-    public void show() { // At some point, we should switch Menu's
-	// initialization to be in Smash, so that one instance
-	// can be used consistently.
-	if (MathUtils.random(1) == 0)
-	    Smash.theme0.play();
-	else
-	    Smash.theme1.play();
-    }
-
-    private void swapTheme() {
-	if (Smash.theme0.isPlaying()) {
-	    Smash.theme0.stop();
-	    Smash.theme1.play();
-	} else {
-	    Smash.theme1.stop();
-	    Smash.theme0.play();
+    public void show() {
+	if (!Smash.theme0.isPlaying() && !Smash.theme1.isPlaying()) {
+	    if (MathUtils.random(1) == 0)
+		Smash.theme0.play();
+	    else
+		Smash.theme1.play();
 	}
     }
 

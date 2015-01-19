@@ -13,6 +13,7 @@ import com.badlogic.gdx.files.FileHandle;
  */
 public class Smash extends Game {
     public static Music theme0, theme1;
+    public static Menu menu;
 
     /**
      * Creates new Smash game. Menu themes are loaded as static Music.
@@ -26,6 +27,8 @@ public class Smash extends Game {
 	theme1 = Gdx.audio.newMusic(new FileHandle(
 		"resource/sound/music/menu-theme1.wav"));
 	theme1.setLooping(true);
+
+	menu = new Menu(this);
     }
 
     @Override
@@ -33,5 +36,15 @@ public class Smash extends Game {
 	theme0.dispose();
 	theme1.dispose();
 	super.dispose();
+    }
+    
+    public static void swapTheme() {
+	if (Smash.theme0.isPlaying()) {
+	    Smash.theme0.stop();
+	    Smash.theme1.play();
+	} else {
+	    Smash.theme1.stop();
+	    Smash.theme0.play();
+	}
     }
 }

@@ -56,7 +56,7 @@ public class Title implements Screen {
 	    count++;
 	    drawText(5, 10);
 	    if (!advance.isPlaying())
-		game.setScreen(new Menu(game));
+		game.setScreen(Smash.menu);
 	}
 	batch.end();
 	count++;
