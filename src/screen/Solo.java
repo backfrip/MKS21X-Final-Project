@@ -9,20 +9,15 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
- * Displays title screen.
+ * Manages solo mode and is displayed between solo matches
  */
 public class Solo implements Screen {
-    private SpriteBatch batch;
-    private Texture title;
     private Smash game;
     private OrthographicCamera camera;
-    private Music advance;
-    private Texture text;
     private Fighter player;
+    private int matchNum;
 
     public Title(Smash gameRef) {
 	game = gameRef;
