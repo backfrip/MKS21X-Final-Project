@@ -17,21 +17,30 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Box2DTest2 implements Screen {
     private World world;
     private Box2DDebugRenderer debugRenderer;
+    private PlayContactListener cl;
     private OrthographicCamera camera;
     private NewPlayer p1, p2;
     private TestStage stage;
     private Smash game;
+    
+    public static final short STAGE = 0x0001;
+    public static final short PLAYER = 0x0002;
+    public static final short ATTACK_SENSOR = 0x0004;
 
     public Box2DTest2(Smash gameRef) {
 	game = gameRef;
 
+	cl = new PlayContactListener();
+
 	world = new World(new Vector2(0, -9.81f), true);
+	world.setContactListener(cl);
+
 	debugRenderer = new Box2DDebugRenderer();
 
 	camera = new OrthographicCamera();
 
-	p1 = new NewPlayer(world, 0, 5);
-	p2 = new NewPlayer(world, 2, 5);
+	p1 = new NewPlayer(world, 1, 0, 5);
+	p2 = new NewPlayer(world, 2, 2, 5);
 
 	stage = new TestStage(world);
     }
@@ -53,6 +62,7 @@ public class Box2DTest2 implements Screen {
     private void getInput() {
 	if (Gdx.input.isKeyJustPressed(Keys.ESCAPE))
 	    game.setScreen(Smash.menu);
+
 	if (Gdx.input.isKeyJustPressed(Keys.UP))
 	    p1.jump();
 	if (Gdx.input.isKeyPressed(Keys.RIGHT)
@@ -63,16 +73,35 @@ public class Box2DTest2 implements Screen {
 	    p1.left();
 	if (Gdx.input.isKeyPressed(Keys.DOWN))
 	    p1.down();
+
 	if (Gdx.input.isKeyJustPressed(Keys.W))
 	    p2.jump();
-	if (Gdx.input.isKeyPressed(Keys.D)
-		&& !Gdx.input.isKeyPressed(Keys.A))
+	if (Gdx.input.isKeyPressed(Keys.D) && !Gdx.input.isKeyPressed(Keys.A))
 	    p2.right();
-	if (Gdx.input.isKeyPressed(Keys.A)
-		&& !Gdx.input.isKeyPressed(Keys.D))
+	if (Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D))
 	    p2.left();
 	if (Gdx.input.isKeyPressed(Keys.S))
 	    p2.down();
+	
+	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT)) {
+	    p1.attack();
+	    doAttack("10");
+	}
+	
+	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
+	    p2.attack();
+	    doAttack("20");
+	}
+
+    }
+    
+    private void doAttack(String attackCode) {
+	int hit = cl.attackHits(attackCode);
+	if (hit == 1)
+	    p1.hit();
+	if (hit == 2)
+	    p2.hit();
+	    
     }
 
     @Override
