@@ -26,6 +26,7 @@ public class Box2DTest2 implements Screen {
     public static final short STAGE = 0x0001;
     public static final short PLAYER = 0x0002;
     public static final short ATTACK_SENSOR = 0x0004;
+    public static final short STAGE_BOUNDS = 0x0008;
 
     public Box2DTest2(Smash gameRef) {
 	game = gameRef;
@@ -111,8 +112,8 @@ public class Box2DTest2 implements Screen {
 
     @Override
     public void resize(int width, int height) {
-	camera.viewportWidth = width / 20;
-	camera.viewportHeight = height / 20;
+	camera.viewportWidth = width / 10;
+	camera.viewportHeight = height / 10;
 	camera.update();
     }
 
