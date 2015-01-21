@@ -84,24 +84,21 @@ public class Box2DTest2 implements Screen {
 	if (Gdx.input.isKeyPressed(Keys.S))
 	    p2.down();
 	
-	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT)) {
-	    p1.attack();
-	    doAttack("10");
-	}
+	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT))
+	    doAttack(p1, "10");
 	
-	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
-	    p2.attack();
-	    doAttack("20");
-	}
+	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT))
+	    doAttack(p2, "20");
 
     }
     
-    private void doAttack(String attackCode) {
+    private void doAttack(NewPlayer p, String attackCode) {
+	p.attack();
 	int hit = cl.attackHits(attackCode);
 	if (hit == 1)
-	    p1.hit();
+	    p1.hit(p.pos());
 	if (hit == 2)
-	    p2.hit();
+	    p2.hit(p.pos());
 	    
     }
 
@@ -112,8 +109,8 @@ public class Box2DTest2 implements Screen {
 
     @Override
     public void resize(int width, int height) {
-	camera.viewportWidth = width / 10;
-	camera.viewportHeight = height / 10;
+	camera.viewportWidth = width / 20;
+	camera.viewportHeight = height / 20;
 	camera.update();
     }
 

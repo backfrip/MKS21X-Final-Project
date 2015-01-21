@@ -13,6 +13,7 @@ public class NewPlayer {
     private Body body;
     private Fixture fixture, testAttackBox;
     private int num;
+    private Vector2 trajectory;
 
     public NewPlayer(World world, int playerNum, float x, float y) {
 	BodyDef bd = new BodyDef();
@@ -45,23 +46,27 @@ public class NewPlayer {
 	testAttackBox.setUserData("0");
 
 	shape.dispose();
-	
+
 	num = playerNum;
+	trajectory = new Vector2(1, 0);
     }
 
     public void jump() {
-	body.setLinearVelocity(body.getLinearVelocity().x, 10);
+	//body.setLinearVelocity(body.getLinearVelocity().x, 10);
+	body.applyLinearImpulse(0, 200, 0, 0, true);
     }
 
     public void right() {
 	if (body.getLinearVelocity().x < 10) {
-	    body.setLinearVelocity(10, body.getLinearVelocity().y);
+	    //body.setLinearVelocity(10, body.getLinearVelocity().y);
+	    body.applyLinearImpulse(100, 0, 0, 0, true);
 	}
     }
 
     public void left() {
 	if (body.getLinearVelocity().x > -10) {
-	    body.setLinearVelocity(-10, body.getLinearVelocity().y);
+	    //body.setLinearVelocity(-10, body.getLinearVelocity().y);
+	    body.applyLinearImpulse(-100, 0, 0, 0, true);
 	}
     }
 
@@ -72,8 +77,21 @@ public class NewPlayer {
     public void attack() {
 	System.out.println("Player " + num + " says: Take that!");
     }
-    
-    public void hit() {
+
+    public void hit(Vector2 enemyLocation) {
 	System.out.println("Player " + num + " says: I'm hit!");
+	// System.out.println("Enemy @ " + (enemyLocation.x -
+	// body.getPosition().x) + " x and " + (enemyLocation.y -
+	// body.getPosition().y) + " y");
+	enemyLocation.x -= body.getPosition().x;
+	enemyLocation.y -= body.getPosition().y;
+	// System.out.println("Enemy at " + enemyLocation.angle() + " degrees");
+	trajectory.setAngle(enemyLocation.angle() + 180);
+	//System.out.println(trajectory.x + ", " + trajectory.y);
+	body.setLinearVelocity(body.getLinearVelocity().x + trajectory.x * 10, body.getLinearVelocity().y + trajectory.y * 10);
+    }
+
+    public Vector2 pos() {
+	return body.getPosition();
     }
 }

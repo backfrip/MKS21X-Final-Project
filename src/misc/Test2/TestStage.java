@@ -31,7 +31,7 @@ public class TestStage {
 	body.createFixture(fd);
 	
 	PolygonShape shapeP = new PolygonShape();
-	shapeP.setAsBox(30, 20);
+	shapeP.setAsBox(35, 25);
 	
 	fd = new FixtureDef();
 	fd.shape = shapeP;
