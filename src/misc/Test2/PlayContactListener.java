@@ -18,15 +18,16 @@ public class PlayContactListener implements ContactListener {
 
     // K, V | "xx", "x" | "<attackingPlayer><attackDirection>",
     // "<defendingPlayer>"
-    
+
     // Attack Direction
-    // x   1   x
-    //  \  |  /
+    // x 1 x
+    // \ | /
     // 4 - 0 - 2
-    // 	/  |  \
-    // x   3   x
-    
-    // NOTE: Plan for aerial attack distinction later (probably add another String character)
+    // / | \
+    // x 3 x
+
+    // NOTE: Plan for aerial attack distinction later (probably add another
+    // String character)
 
     @Override
     public void beginContact(Contact c) {
@@ -48,14 +49,20 @@ public class PlayContactListener implements ContactListener {
 	    attacks.remove(formatAttack(fa));
 	if (fb.getFilterData().categoryBits == Box2DTest2.ATTACK_SENSOR)
 	    attacks.remove(formatAttack(fb));
+	if (fa.getFilterData().categoryBits == Box2DTest2.STAGE_BOUNDS)
+	    System.out.println("Player "
+		    + fb.getBody().getUserData().toString() + " just died!");
+	if (fb.getFilterData().categoryBits == Box2DTest2.STAGE_BOUNDS)
+	    System.out.println("Player "
+		    + fa.getBody().getUserData().toString() + " just died!");
     }
 
     private String formatAttack(Fixture f) {
 	return f.getBody().getUserData().toString()
 		+ f.getUserData().toString();
     }
-    
-    
+
+
     public int attackHits(String attackCode) {
 	if (attacks.containsKey(attackCode))
 	    return Integer.parseInt(attacks.get(attackCode));
