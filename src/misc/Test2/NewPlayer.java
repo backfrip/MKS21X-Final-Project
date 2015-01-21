@@ -106,7 +106,7 @@ public class NewPlayer {
 	attack03.setUserData("3");
 	
 	fd = new FixtureDef();
-	shape.setAsBox(.5f, 1.5f, new Vector2(0, -1), 0);
+	shape.setAsBox(.5f, 1.5f, new Vector2(-1, 0), 0);
 	fd.shape = shape;
 	fd.isSensor = true;
 	fd.filter.categoryBits = Box2DTest2.ATTACK_SENSOR;
