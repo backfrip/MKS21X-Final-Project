@@ -86,11 +86,33 @@ public class Box2DTest2 implements Screen {
 	if (Gdx.input.isKeyPressed(Keys.S))
 	    p2.down();
 
-	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT))
-	    doAttack(p1, "10");
+	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT)) {
+	    if (Gdx.input.isKeyPressed(Keys.UP))
+		doAttack(p1, "11");
+	    else if (Gdx.input.isKeyPressed(Keys.RIGHT)
+		    && !Gdx.input.isKeyPressed(Keys.LEFT))
+		doAttack(p1, "12");
+	    else if (Gdx.input.isKeyPressed(Keys.LEFT) && !Gdx.input.isKeyPressed(Keys.RIGHT))
+		doAttack(p1, "14");
+	    else if (Gdx.input.isKeyPressed(Keys.DOWN))
+		doAttack(p1, "13");
+	    else
+		doAttack(p1, "10");
+	}
 
-	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT))
-	    doAttack(p2, "20");
+	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT)) {
+	    if (Gdx.input.isKeyPressed(Keys.W))
+		doAttack(p1, "21");
+	    else if (Gdx.input.isKeyPressed(Keys.D)
+		    && !Gdx.input.isKeyPressed(Keys.A))
+		doAttack(p1, "22");
+	    else if (Gdx.input.isKeyPressed(Keys.A) && !Gdx.input.isKeyPressed(Keys.D))
+		doAttack(p1, "24");
+	    else if (Gdx.input.isKeyPressed(Keys.S))
+		doAttack(p1, "23");
+	    else
+		doAttack(p1, "20");
+	}
 
     }
 

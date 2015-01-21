@@ -25,12 +25,14 @@ public class PlayContactListener implements ContactListener {
     // K, V | "xx", "x" | "<attackingPlayer><attackDirection>",
     // "<defendingPlayer>"
 
+    // @formatter:off
     // Attack Direction
-    // x 1 x
-    // \ | /
+    // x   1   x
+    //  \  |  /
     // 4 - 0 - 2
-    // / | \
-    // x 3 x
+    //  /  |  \
+    // x   3   x
+    // @formatter:on
 
     // NOTE: Plan for aerial attack distinction later (probably add another
     // String character)
@@ -53,13 +55,6 @@ public class PlayContactListener implements ContactListener {
 	    setAerial(Integer.parseInt(fb.getBody().getUserData().toString()),
 		    0);
 
-    }
-
-    private void setAerial(int num, int value) {
-	if (num == 1)
-	    screen.p1.setAerialState(value);
-	if (num == 2)
-	    screen.p2.setAerialState(value);
     }
 
     @Override
@@ -97,6 +92,13 @@ public class PlayContactListener implements ContactListener {
 	if (attacks.containsKey(attackCode))
 	    return Integer.parseInt(attacks.get(attackCode));
 	return 0;
+    }
+    
+    private void setAerial(int num, int value) {
+	if (num == 1)
+	    screen.p1.setAerialState(value);
+	if (num == 2)
+	    screen.p2.setAerialState(value);
     }
 
     @Override

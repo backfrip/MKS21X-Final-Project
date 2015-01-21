@@ -10,11 +10,20 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class NewPlayer {
     private Body body;
-    private Fixture testAttackBox;
-    private int num;
+    private Fixture attack00, attack01;
     private Vector2 trajectory;
     private int aerialState; // 0 = ground; 1 = aerial; 2 = falling; 3 = falling
 			     // no actions
+
+    // @formatter:off
+    // (Copied from PlayContactListener)
+    // Attack Direction
+    // x   1   x
+    //  \  |  /
+    // 4 - 0 - 2
+    //  /  |  \
+    // x   3   x
+    // @formatter:on
 
     public NewPlayer(World world, int playerNum, float x, float y) {
 	BodyDef bd = new BodyDef();
@@ -44,12 +53,21 @@ public class NewPlayer {
 	fd.filter.categoryBits = Box2DTest2.ATTACK_SENSOR;
 	fd.filter.maskBits = Box2DTest2.PLAYER;
 
-	testAttackBox = body.createFixture(fd);
-	testAttackBox.setUserData("0");
+	attack00 = body.createFixture(fd);
+	attack00.setUserData("0");
+
+	fd = new FixtureDef();
+	shape.setAsBox(1.5f, .5f, new Vector2(0, 1.5f), 0);
+	fd.shape = shape;
+	fd.isSensor = true;
+	fd.filter.categoryBits = Box2DTest2.ATTACK_SENSOR;
+	fd.filter.maskBits = Box2DTest2.PLAYER;
+
+	attack01 = body.createFixture(fd);
+	attack01.setUserData("1");
 
 	shape.dispose();
 
-	num = playerNum;
 	trajectory = new Vector2(1, 0);
     }
 
@@ -80,11 +98,11 @@ public class NewPlayer {
     }
 
     public void attack() {
-	System.out.println("Player " + num + " says: Take that!");
+	// System.out.println("Player " + num + " says: Take that!");
     }
 
     public void hit(Vector2 enemyLocation) {
-	System.out.println("Player " + num + " says: I'm hit!");
+	// System.out.println("Player " + num + " says: I'm hit!");
 	// System.out.println("Enemy @ " + (enemyLocation.x -
 	// body.getPosition().x) + " x and " + (enemyLocation.y -
 	// body.getPosition().y) + " y");
@@ -95,8 +113,7 @@ public class NewPlayer {
 	// System.out.println(trajectory.x + ", " + trajectory.y);
 	body.setLinearVelocity(body.getLinearVelocity().x + trajectory.x * 10,
 	/* body.getLinearVelocity().y + */trajectory.y * 10 + 2);
-	if (aerialState > 1)
-	    aerialState = 1;
+	aerialState = 3;
     }
 
     public Vector2 pos() {
