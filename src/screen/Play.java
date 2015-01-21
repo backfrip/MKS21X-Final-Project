@@ -3,15 +3,12 @@ package screen;
 import main.Smash;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Play implements Screen {
     private Smash game;
-    private Stage stage;
     
     public Play(Smash gameRef) {
 	game = gameRef;
-	stage = new Stage();
     }
 
     @Override

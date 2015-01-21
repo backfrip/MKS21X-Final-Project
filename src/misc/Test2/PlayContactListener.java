@@ -15,6 +15,12 @@ public class PlayContactListener implements ContactListener {
 										 // containing
 										 // possbile
 										 // attacks
+    private Box2DTest2 screen;
+
+    public PlayContactListener(Box2DTest2 playScreen) {
+	super();
+	screen = playScreen;
+    }
 
     // K, V | "xx", "x" | "<attackingPlayer><attackDirection>",
     // "<defendingPlayer>"
@@ -38,6 +44,22 @@ public class PlayContactListener implements ContactListener {
 	    attacks.put(formatAttack(fa), fb.getBody().getUserData().toString());
 	if (fb.getFilterData().categoryBits == Box2DTest2.ATTACK_SENSOR)
 	    attacks.put(formatAttack(fb), fa.getBody().getUserData().toString());
+	if (fa.getFilterData().categoryBits == Box2DTest2.PLAYER
+		&& fb.getFilterData().categoryBits == Box2DTest2.STAGE)
+	    setAerial(Integer.parseInt(fa.getBody().getUserData().toString()),
+		    0);
+	if (fb.getFilterData().categoryBits == Box2DTest2.PLAYER
+		&& fa.getFilterData().categoryBits == Box2DTest2.STAGE)
+	    setAerial(Integer.parseInt(fb.getBody().getUserData().toString()),
+		    0);
+
+    }
+
+    private void setAerial(int num, int value) {
+	if (num == 1)
+	    screen.p1.setAerialState(value);
+	if (num == 2)
+	    screen.p2.setAerialState(value);
     }
 
     @Override
@@ -55,6 +77,14 @@ public class PlayContactListener implements ContactListener {
 	if (fb.getFilterData().categoryBits == Box2DTest2.STAGE_BOUNDS)
 	    System.out.println("Player "
 		    + fa.getBody().getUserData().toString() + " just died!");
+	if (fa.getFilterData().categoryBits == Box2DTest2.PLAYER
+		&& fb.getFilterData().categoryBits == Box2DTest2.STAGE)
+	    setAerial(Integer.parseInt(fa.getBody().getUserData().toString()),
+		    1);
+	if (fb.getFilterData().categoryBits == Box2DTest2.PLAYER
+		&& fa.getFilterData().categoryBits == Box2DTest2.STAGE)
+	    setAerial(Integer.parseInt(fb.getBody().getUserData().toString()),
+		    1);
     }
 
     private String formatAttack(Fixture f) {

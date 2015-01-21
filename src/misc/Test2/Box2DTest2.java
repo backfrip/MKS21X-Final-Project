@@ -19,10 +19,12 @@ public class Box2DTest2 implements Screen {
     private Box2DDebugRenderer debugRenderer;
     private PlayContactListener cl;
     private OrthographicCamera camera;
-    private NewPlayer p1, p2;
+    @SuppressWarnings("unused")
     private TestStage stage;
     private Smash game;
-    
+
+    public NewPlayer p1, p2;
+
     public static final short STAGE = 0x0001;
     public static final short PLAYER = 0x0002;
     public static final short ATTACK_SENSOR = 0x0004;
@@ -31,7 +33,7 @@ public class Box2DTest2 implements Screen {
     public Box2DTest2(Smash gameRef) {
 	game = gameRef;
 
-	cl = new PlayContactListener();
+	cl = new PlayContactListener(this);
 
 	world = new World(new Vector2(0, -9.81f), true);
 	world.setContactListener(cl);
@@ -40,8 +42,8 @@ public class Box2DTest2 implements Screen {
 
 	camera = new OrthographicCamera();
 
-	p1 = new NewPlayer(world, 1, 0, 5);
-	p2 = new NewPlayer(world, 2, 2, 5);
+	p1 = new NewPlayer(world, 1, 0, -5);
+	p2 = new NewPlayer(world, 2, 2, -5);
 
 	stage = new TestStage(world);
     }
@@ -83,15 +85,15 @@ public class Box2DTest2 implements Screen {
 	    p2.left();
 	if (Gdx.input.isKeyPressed(Keys.S))
 	    p2.down();
-	
+
 	if (Gdx.input.isKeyJustPressed(Keys.CONTROL_RIGHT))
 	    doAttack(p1, "10");
-	
+
 	if (Gdx.input.isKeyJustPressed(Keys.SHIFT_LEFT))
 	    doAttack(p2, "20");
 
     }
-    
+
     private void doAttack(NewPlayer p, String attackCode) {
 	p.attack();
 	int hit = cl.attackHits(attackCode);
@@ -99,7 +101,7 @@ public class Box2DTest2 implements Screen {
 	    p1.hit(p.pos());
 	if (hit == 2)
 	    p2.hit(p.pos());
-	    
+
     }
 
     @Override

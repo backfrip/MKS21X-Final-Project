@@ -1,7 +1,6 @@
 package screen;
 
 import main.*;
-import misc.JeremysBox2DTest;
 import misc.Test2.Box2DTest2;
 
 import com.badlogic.gdx.Gdx;
