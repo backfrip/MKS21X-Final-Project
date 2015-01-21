@@ -17,13 +17,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class Title implements Screen {
     private SpriteBatch batch;
-    private Texture title;
+    private Texture title,text;
     private Smash game;
     private OrthographicCamera camera;
     private Music advance;
     private boolean go;
     private int count;
-    private Texture text;
 
     public Title(Smash gameRef) {
 	game = gameRef;

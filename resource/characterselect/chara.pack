@@ -1,0 +1,75 @@
+
+chara.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ready
+  rotate: false
+  xy: 0, 64
+  size: 1280, 96
+  orig: 1280, 96
+  offset: 0, 0
+  index: -1
+adventurer
+  rotate: false
+  xy: 1280, 0
+  size: 160, 160
+  orig: 160, 160
+  offset: 0, 0
+  index: -1
+p1
+  rotate: false
+  xy: 1440, 48
+  size: 84, 112
+  orig: 84, 112
+  offset: 0, 0
+  index: -1
+p2
+  rotate: false
+  xy: 1524, 48
+  size: 84, 112
+  orig: 84, 112
+  offset: 0, 0
+  index: -1
+p3
+  rotate: false
+  xy: 1608, 48
+  size: 84, 112
+  orig: 84, 112
+  offset: 0, 0
+  index: -1
+p4
+  rotate: false
+  xy: 1692, 48
+  size: 84, 112
+  orig: 84, 112
+  offset: 0, 0
+  index: -1
+p1-token
+  rotate: false
+  xy: 0, 16
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+p2-token
+  rotate: false
+  xy: 1440, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+p3-token
+  rotate: false
+  xy: 48, 16
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+p4-token
+  rotate: false
+  xy: 1488, 0
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
