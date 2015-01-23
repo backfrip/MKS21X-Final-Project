@@ -28,6 +28,22 @@ public class TestStage {
 	body = world.createBody(bd);
 	body.createFixture(fd);
 	
+	shape = new ChainShape();
+	shape.createChain(new Vector2[] {
+		new Vector2(-25, 0),
+		new Vector2(-10, 0)
+	});
+	fd.shape = shape;
+	body.createFixture(fd);
+	
+	shape = new ChainShape();
+	shape.createChain(new Vector2[] {
+		new Vector2(15, 10),
+		new Vector2(25, 15)
+	});
+	fd.shape = shape;
+	body.createFixture(fd);
+	
 	PolygonShape shapeP = new PolygonShape();
 	shapeP.setAsBox(35, 25);
 	

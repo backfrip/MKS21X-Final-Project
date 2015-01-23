@@ -1,5 +1,10 @@
 package misc.Test2;
 
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -21,6 +26,7 @@ public class NewPlayer {
     private Vector2 trajectory;
     private int aerialState; // 0 = ground; 1 = aerial; 2 = falling; 3 = falling
 			     // with no actions
+    private int count;
 
     // @formatter:off
     // (Copied from PlayContactListener)
@@ -32,6 +38,9 @@ public class NewPlayer {
     // x   3   x
     // @formatter:on
 
+    private Sprite sprite;
+    private Texture texture;
+
     /**
      * Creates a new NewPlayer.
      * 
@@ -40,9 +49,9 @@ public class NewPlayer {
      * @param playerNum
      *            Number used for NewPlayer's body's userData
      * @param x
-     *            Height of NewPlayer
+     *            X Position of NewPlayer
      * @param y
-     *            Width of NewPlayer
+     *            Y Position of NewPlayer
      */
     public NewPlayer(World world, int playerNum, float x, float y) {
 	// Create the NewPlayer's body
@@ -57,7 +66,7 @@ public class NewPlayer {
 	// Definition for the fixture that gives our player a physical presence
 	// (all the attack boxes are like ghost fixtures)
 	FixtureDef fd = new FixtureDef();
-	shape.setAsBox(1, 1.5f);
+	shape.setAsBox(1, 2.5f);
 	fd.shape = shape;
 	fd.restitution = 0f;
 	fd.friction = .8f;
@@ -138,6 +147,25 @@ public class NewPlayer {
 
 	trajectory = new Vector2(1, 0); // We'll explain this later, just note
 					// that its length is 1
+
+	texture = new Texture(new FileHandle("resource/character/kman.png"));
+	sprite = new Sprite(texture);
+	sprite.setSize(3, 6);
+    }
+
+    public void drawSprite(SpriteBatch batch) {
+	sprite.setPosition(body.getPosition().x - 1.5f,
+		body.getPosition().y - 3);
+	if (count != 0) {
+	    count--;
+	} else {
+	    sprite.setAlpha(1);
+	}
+	sprite.draw(batch);
+    }
+
+    public void tintSprite() {
+	sprite.setColor(0.3f, 0.3f, 1, 1);
     }
 
     /**
@@ -221,6 +249,8 @@ public class NewPlayer {
 			 // actions, but there should be a stun period in which
 			 // the character is unable to move (so that one can
 			 // chain))
+	sprite.setAlpha(.5f);
+	count = 10;
     }
 
     /**
